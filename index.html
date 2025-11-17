@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name - Portfolio</title>
+  <title>Allena Ogliivie.com</title>
+  <link rel="icon" type="image/png" href="public/logo.png">
+
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
@@ -14,7 +16,7 @@
   <nav class="navbar-horizontal" id="index-navbar">
     <div class="nav-container">
       <a href="index.html" class="logo-link" aria-label="Go to homepage">
-        <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image logo-image-home" />
+        <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image-home" />
       </a>
       <div style="display: flex; align-items: center; gap: 1.5rem;">
         <div class="nav-links-right">
@@ -23,22 +25,7 @@
           <a href="projects.html" class="nav-link-text">Projects</a>
           <a href="resume.html" class="nav-link-text">Resume</a>
           <a href="contact.html" class="nav-link-text">Contact</a>
-          <a href="game.html" class="nav-link-text">Game</a>
-        </div>
-        <div class="nav-controls">
-          <div class="dropdown">
-            <button class="dropdown-toggle" id="settings-toggle-btn" aria-haspopup="true" aria-expanded="false" aria-label="Open navbar settings">⚙️</button>
-            <div class="dropdown-menu" id="settings-menu" role="menu">
-              <p class="dropdown-label">Navbar Settings</p>
-              <button class="dropdown-item" id="sticky-toggle-btn" type="button">
-                <span>
-                  <span id="sticky-icon">📌</span>
-                  <span id="sticky-text">Sticky On</span>
-                </span>
-              </button>
-            </div>
-          </div>
-          <button class="theme-toggle-horizontal" aria-label="Toggle theme">🎮</button>
+         <!-- <a href="game.html" class="nav-link-text">Game</a> -->
         </div>
       </div>
     </div>
@@ -104,69 +91,66 @@
       </div>
     </section>
 
-    <!-- Featured Projects -->
+    <!-- Recent Work Experience -->
     <section class="container" style="padding: 5rem 0;">
       <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem; color: var(--text-primary);">
-        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;"></span> Featured Projects
+        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;"></span> Recent Work Experience
       </h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
         <div class="card">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <span style="font-size: 1.5rem;">📁</span>
-            <div style="display: flex; gap: 0.5rem;">
-              <a href="#" class="text-accent" style="text-decoration: none;">🔗</a>
-              <a href="#" class="text-accent" style="text-decoration: none;">📦</a>
-            </div>
-          </div>
-          <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--text-primary);">Project Name 1</h3>
-          <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
-            A brief description of what this project does and the technologies used.
+          <p style="color: var(--accent); font-family: monospace; margin-bottom: 0.25rem;">2024 — Present</p>
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: var(--text-primary); margin-bottom: 0.25rem;">Software Engineering Intern</h3>
+          <p style="color: var(--text-secondary); font-weight: 600; margin-bottom: 0.75rem;">Cal Innovation Lab</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+            Building accessible UI systems and data dashboards that support student success initiatives. Owning the full front-end stack with a focus on design consistency and performance.
           </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">React</span>
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">TypeScript</span>
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Next.js</span>
-          </div>
         </div>
         <div class="card">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <span style="font-size: 1.5rem;">📁</span>
-            <div style="display: flex; gap: 0.5rem;">
-              <a href="#" class="text-accent" style="text-decoration: none;">🔗</a>
-              <a href="#" class="text-accent" style="text-decoration: none;">📦</a>
-            </div>
-          </div>
-          <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--text-primary);">Project Name 2</h3>
-          <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
-            A brief description of what this project does and the technologies used.
+          <p style="color: var(--accent); font-family: monospace; margin-bottom: 0.25rem;">2023 — 2024</p>
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: var(--text-primary); margin-bottom: 0.25rem;">Product Designer & Engineer</h3>
+          <p style="color: var(--text-secondary); font-weight: 600; margin-bottom: 0.75rem;">STEM Outreach Collective</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+            Led a cross-functional team to launch a resource hub for first-gen students. Delivered responsive layouts, custom illustrations, and automated content updates.
           </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Python</span>
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Flask</span>
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">PostgreSQL</span>
-          </div>
         </div>
         <div class="card">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-            <span style="font-size: 1.5rem;">📁</span>
-            <div style="display: flex; gap: 0.5rem;">
-              <a href="#" class="text-accent" style="text-decoration: none;">🔗</a>
-              <a href="#" class="text-accent" style="text-decoration: none;">📦</a>
-            </div>
-          </div>
-          <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--text-primary);">Project Name 3</h3>
-          <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
-            A brief description of what this project does and the technologies used.
+          <p style="color: var(--accent); font-family: monospace; margin-bottom: 0.25rem;">2022 — 2023</p>
+          <h3 style="font-size: 1.25rem; font-weight: bold; color: var(--text-primary); margin-bottom: 0.25rem;">Instructional Lead</h3>
+          <p style="color: var(--text-secondary); font-weight: 600; margin-bottom: 0.75rem;">Girls Who Code College Loop</p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+            Guided weekly labs on JavaScript, Git, and human-centered design. Mentored 30+ students and coordinated hackathon-style build weeks focused on inclusive tech.
           </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Node.js</span>
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Express</span>
-            <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">MongoDB</span>
-          </div>
         </div>
       </div>
-      <div style="text-align: center;">
-        <a href="projects.html" class="text-accent" style="text-decoration: none; font-weight: 500;">View All Projects →</a>
+    </section>
+
+    <!-- Professional Fellowships -->
+    <section class="container" style="padding: 0 0 5rem;">
+      <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem; color: var(--text-primary);">
+        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;"></span> Professional Fellowships & Programs
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <div class="card">
+          <p style="color: var(--accent); font-family: monospace; margin-bottom: 0.25rem;">2024</p>
+          <h3 style="font-size: 1.15rem; font-weight: bold; color: var(--text-primary); margin-bottom: 0.5rem;">MLH Fellowship</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Collaborated with fellows worldwide to ship production contributions in open-source ecosystems with a focus on accessibility tooling.
+          </p>
+        </div>
+        <div class="card">
+          <p style="color: var(--accent); font-family: monospace; margin-bottom: 0.25rem;">2023</p>
+          <h3 style="font-size: 1.15rem; font-weight: bold; color: var(--text-primary); margin-bottom: 0.5rem;">Google Tech Equity Professional Fellowships</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Deep dive into human-centered research, prototyping, and pitching inclusive product concepts directly to Googlers and community leaders.
+          </p>
+        </div>
+        <div class="card">
+          <p style="color: var(--accent); font-family: monospace; margin-bottom: 0.25rem;">2022</p>
+          <h3 style="font-size: 1.15rem; font-weight: bold; color: var(--text-primary); margin-bottom: 0.5rem;">Berkeley XR Design Sprint</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+            Prototyped immersive learning experiences, conducted usability testing, and presented findings to faculty advisors.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -174,7 +158,7 @@
     <footer class="footer">
       <div class="footer-content">
         <p style="color: var(--text-secondary); font-size: 0.875rem;">
-          © <span id="current-year"></span> Your Name. All rights reserved.
+          © <span id="current-year"></span> Allena Oglivie. All rights reserved.
         </p>
         <div class="footer-social">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">🐙</a>

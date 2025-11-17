@@ -51,7 +51,7 @@ Place your resume PDF file in the root directory as `resume.pdf`
 
 ### Update Personal Information
 
-1. **Home Page**: Edit `index.html` to update your name, bio, and featured projects
+1. **Home Page**: Edit `index.html` to update Allena Oglivie, bio, and featured projects
 2. **About Page**: Edit `about.html` with your experience and education
 3. **Projects**: Update `projects.html` with your actual projects
 4. **Contact**: Update social media links in `contact.html` and footer sections

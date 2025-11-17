@@ -24,7 +24,7 @@ npx http-server
 
 ## 📝 What to Customize
 
-1. **Your Name**: Search and replace "Your Name" in all HTML files
+1. **Allena Oglivie**: Search and replace "Allena Oglivie" in all HTML files
 2. **Resume**: Place your `resume.pdf` file in the root directory
 3. **Social Links**: Update links in:
    - Footer of all pages
