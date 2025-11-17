@@ -95,6 +95,11 @@ body {
   transition: transform 0.3s ease;
 }
 
+.logo-image-home {
+  height: 32px;
+  width: auto;
+}
+
 .logo-link:hover .logo-image {
   transform: scale(1.03);
 }
