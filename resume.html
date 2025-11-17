@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - Your Name</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <canvas id="background-canvas"></canvas>
+
+  <!-- Horizontal Navigation -->
+  <nav class="navbar-horizontal">
+    <div class="nav-container">
+      <a href="index.html" style="color: var(--accent); font-weight: bold; font-size: 1.25rem; text-decoration: none;">Portfolio</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link-text">Home</a>
+        <a href="about.html" class="nav-link-text">About</a>
+        <a href="projects.html" class="nav-link-text">Projects</a>
+        <a href="resume.html" class="nav-link-text active">Resume</a>
+        <a href="contact.html" class="nav-link-text">Contact</a>
+        <a href="game.html" class="nav-link-text">Game</a>
+      </div>
+      <button class="theme-toggle-horizontal" aria-label="Toggle theme">🎮</button>
+    </div>
+  </nav>
+
+  <main class="main-content-horizontal">
+    <div class="container animate-fade-in">
+      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 2rem; color: var(--text-primary);">
+        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;">Resume</span>
+      </h1>
+      
+      <div class="card" style="margin-bottom: 2rem;">
+        <div style="aspect-ratio: 8.5/11; background: white; border-radius: 0.25rem;">
+          <iframe
+            src="resume.pdf"
+            style="width: 100%; height: 100%; border: none; border-radius: 0.25rem;"
+            title="Resume"
+          ></iframe>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 1rem; text-align: center;">
+          If the PDF doesn't load, 
+          <a href="resume.pdf" download style="color: var(--accent); text-decoration: none;">download it here</a>
+        </p>
+      </div>
+      
+      <div style="text-align: center;">
+        <a href="resume.pdf" download class="btn btn-primary">
+          Download Resume PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p style="color: var(--text-secondary); font-size: 0.875rem;">
+          © <span id="current-year"></span> Your Name. All rights reserved.
+        </p>
+        <div class="footer-social">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">🐙</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">💼</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="mailto:your.email@example.com" class="social-link" aria-label="Email">📧</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+

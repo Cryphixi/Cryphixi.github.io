@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Your Name</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <canvas id="background-canvas"></canvas>
+
+  <!-- Horizontal Navigation -->
+  <nav class="navbar-horizontal">
+    <div class="nav-container">
+      <a href="index.html" style="color: var(--accent); font-weight: bold; font-size: 1.25rem; text-decoration: none;">Portfolio</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link-text">Home</a>
+        <a href="about.html" class="nav-link-text">About</a>
+        <a href="projects.html" class="nav-link-text active">Projects</a>
+        <a href="resume.html" class="nav-link-text">Resume</a>
+        <a href="contact.html" class="nav-link-text">Contact</a>
+        <a href="game.html" class="nav-link-text">Game</a>
+      </div>
+      <button class="theme-toggle-horizontal" aria-label="Toggle theme">🎮</button>
+    </div>
+  </nav>
+
+  <main class="main-content-horizontal">
+    <div class="container animate-fade-in">
+      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">
+        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;">Projects</span>
+      </h1>
+      
+      <p style="color: var(--text-secondary); font-size: 1.125rem; margin-bottom: 3rem; max-width: 32rem;">
+        Here are some of the projects I've worked on. Each one represents a unique 
+        challenge and learning experience.
+      </p>
+      
+      <div style="display: flex; flex-direction: column; gap: 3rem;">
+        <!-- Project 1 -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
+          <div class="card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Featured Project</span>
+              <div style="display: flex; gap: 1rem;">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">📦</a>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">🔗</a>
+              </div>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Project Name 1</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              A comprehensive description of your project, what it does, and the problems it solves.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">React</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">TypeScript</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Next.js</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Tailwind CSS</span>
+            </div>
+          </div>
+          <div style="position: relative;">
+            <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
+            <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 4rem;">🚀</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
+          <div style="position: relative; order: 2;">
+            <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
+            <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 4rem;">🚀</span>
+            </div>
+          </div>
+          <div class="card" style="order: 1;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Featured Project</span>
+              <div style="display: flex; gap: 1rem;">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">📦</a>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">🔗</a>
+              </div>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Project Name 2</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              Another project description highlighting your skills and achievements.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Python</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Flask</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
+          <div class="card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Featured Project</span>
+              <div style="display: flex; gap: 1rem;">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">📦</a>
+                <a href="https://example.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">🔗</a>
+              </div>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Project Name 3</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              A third project showcasing different technologies and approaches.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Node.js</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Express</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">MongoDB</span>
+            </div>
+          </div>
+          <div style="position: relative;">
+            <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
+            <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 4rem;">🚀</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p style="color: var(--text-secondary); font-size: 0.875rem;">
+          © <span id="current-year"></span> Your Name. All rights reserved.
+        </p>
+        <div class="footer-social">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">🐙</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">💼</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="mailto:your.email@example.com" class="social-link" aria-label="Email">📧</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
