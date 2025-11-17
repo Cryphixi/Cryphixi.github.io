@@ -69,10 +69,7 @@ body {
 }
 
 .navbar-horizontal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 50;
   background-color: rgba(17, 34, 64, 0.8);
   backdrop-filter: blur(10px);
@@ -296,8 +293,7 @@ body {
 
 .main-content-horizontal {
   flex: 1;
-  padding-top: 80px;
-  padding: 6rem 1.5rem 2rem;
+  padding: 2rem 1.5rem;
 }
 
 .container {
