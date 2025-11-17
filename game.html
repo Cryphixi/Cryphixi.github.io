@@ -15,6 +15,16 @@
       height: 24rem;
       overflow: hidden;
     }
+    #game-area .game-start-message {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .game-target {
       display: flex;
       align-items: center;
@@ -31,16 +41,17 @@
   <!-- Horizontal Navigation -->
   <nav class="navbar-horizontal">
     <div class="nav-container">
-      <a href="index.html" style="color: var(--accent); font-weight: bold; font-size: 1.25rem; text-decoration: none;">Portfolio</a>
-      <div class="nav-links">
+      <a href="index.html" class="logo-link" aria-label="Go to homepage">
+        <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image" />
+      </a>
+      <div class="nav-links-right">
         <a href="index.html" class="nav-link-text">Home</a>
         <a href="about.html" class="nav-link-text">About</a>
         <a href="projects.html" class="nav-link-text">Projects</a>
         <a href="resume.html" class="nav-link-text">Resume</a>
         <a href="contact.html" class="nav-link-text">Contact</a>
-        <a href="game.html" class="nav-link-text active">Game</a>
+          <!-- <a href="game.html" class="nav-link-text">Game</a> -->
       </div>
-      <button class="theme-toggle-horizontal" aria-label="Toggle theme">🎮</button>
     </div>
   </nav>
 
@@ -71,7 +82,7 @@
         </div>
         
         <div id="game-area">
-          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-center;">
+          <div class="game-start-message">
             <p style="color: var(--text-secondary); font-size: 1.25rem;">Click "Start Game" to begin!</p>
           </div>
         </div>

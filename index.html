@@ -10,20 +10,41 @@
 <body>
   <canvas id="background-canvas"></canvas>
 
-  <!-- Vertical Navigation -->
-  <nav class="navbar">
-    <div class="nav-links">
-      <a href="index.html" class="nav-link active" title="Home">🏠</a>
-      <a href="about.html" class="nav-link" title="About">👤</a>
-      <a href="projects.html" class="nav-link" title="Projects">💼</a>
-      <a href="resume.html" class="nav-link" title="Resume">📄</a>
-      <a href="contact.html" class="nav-link" title="Contact">📧</a>
-      <a href="game.html" class="nav-link" title="Game">🎮</a>
+  <!-- Horizontal Navigation with Sticky Toggle -->
+  <nav class="navbar-horizontal" id="index-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo-link" aria-label="Go to homepage">
+        <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image" />
+      </a>
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <div class="nav-links-right">
+          <a href="index.html" class="nav-link-text active">Home</a>
+          <a href="about.html" class="nav-link-text">About</a>
+          <a href="projects.html" class="nav-link-text">Projects</a>
+          <a href="resume.html" class="nav-link-text">Resume</a>
+          <a href="contact.html" class="nav-link-text">Contact</a>
+          <a href="game.html" class="nav-link-text">Game</a>
+        </div>
+        <div class="nav-controls">
+          <div class="dropdown">
+            <button class="dropdown-toggle" id="settings-toggle-btn" aria-haspopup="true" aria-expanded="false" aria-label="Open navbar settings">⚙️</button>
+            <div class="dropdown-menu" id="settings-menu" role="menu">
+              <p class="dropdown-label">Navbar Settings</p>
+              <button class="dropdown-item" id="sticky-toggle-btn" type="button">
+                <span>
+                  <span id="sticky-icon">📌</span>
+                  <span id="sticky-text">Sticky On</span>
+                </span>
+              </button>
+            </div>
+          </div>
+          <button class="theme-toggle-horizontal" aria-label="Toggle theme">🎮</button>
+        </div>
+      </div>
     </div>
-    <button class="theme-toggle" aria-label="Toggle theme">🎮</button>
   </nav>
 
-  <main class="main-content">
+  <main class="main-content-horizontal">
     <!-- Hero Section -->
     <section class="container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
       <div class="animate-fade-in" style="max-width: 896px; width: 100%;">
@@ -31,17 +52,16 @@
           Hi, my name is
         </p>
         <h1 style="font-size: 4rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);" class="animate-slide-in">
-          Your Name.
+          Allena Oglivie
         </h1>
         <h2 style="font-size: 3.5rem; font-weight: bold; color: var(--text-secondary); margin-bottom: 1.5rem;" class="animate-slide-in">
-          I build things for the web.
+          Junior @ UC Berkeley Computer Science 
         </h2>
         <p style="color: var(--text-secondary); font-size: 1.125rem; max-width: 32rem; margin-bottom: 2rem;" class="animate-fade-in">
-          I'm a software engineer specializing in building exceptional digital experiences. 
-          Currently, I'm focused on building accessible, human-centered products.
+          I advocate for accesiblity and representation in the tech industry and education world.
         </p>
         <div style="display: flex; gap: 1rem;" class="animate-fade-in">
-          <a href="projects.html" class="btn btn-outline">Check out my work!</a>
+          <a href="projects.html" class="btn btn-outline">Current Projects!</a>
           <a href="contact.html" class="btn btn-primary">Get in touch</a>
         </div>
       </div>
@@ -50,17 +70,18 @@
     <!-- About Section -->
     <section class="container" style="padding: 5rem 0;">
       <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem; color: var(--text-primary);">
-        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;">01.</span> About Me
+        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;"></span> About Me
       </h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
         <div style="color: var(--text-secondary);">
           <p style="margin-bottom: 1rem;">
-            Hello! I'm a software engineer based in [Your Location], specializing in building 
-            exceptional digital experiences. I enjoy creating things that live on the internet, 
-            whether that be websites, applications, or anything in between.
+            My passion for Computer Science, technology, Graphic Design, and ML/AI all started with a love for video games. 
+            I've been playing games since I was a kid, and I've always been fascinated by the technology that powers them.
+            As an Afro-Latina, I continue to push for representation in the tech industry and education world. For I too was once a kid 
+            who experieced the lack of representation and accesiblity to tech and education.
           </p>
           <p style="margin-bottom: 1rem;">
-            My goal is to always build products that provide pixel-perfect, performant experiences.
+            My goal is to always build projects that provide accessible and inclusive experiences that puts a smile on people's faces!
           </p>
           <p style="margin-bottom: 1rem;">
             Here are a few technologies I've been working with recently:
@@ -86,7 +107,7 @@
     <!-- Featured Projects -->
     <section class="container" style="padding: 5rem 0;">
       <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem; color: var(--text-primary);">
-        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;">02.</span> Featured Projects
+        <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;"></span> Featured Projects
       </h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
         <div class="card">
