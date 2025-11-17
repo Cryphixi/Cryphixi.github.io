@@ -206,8 +206,33 @@ class Carousel {
       });
     }
 
+    // Check for URL parameter to auto-open modal
+    this.checkUrlForOrg();
+
     // Start auto-rotation
     this.startRotation();
+  }
+
+  checkUrlForOrg() {
+    const hash = window.location.hash;
+    if (hash && hash.includes('?org=')) {
+      const orgMatch = hash.match(/\?org=([^&]+)/);
+      if (orgMatch && orgMatch[1]) {
+        const orgKey = orgMatch[1];
+        // Wait for page to load and scroll, then open modal
+        setTimeout(() => {
+          // Scroll to the carousel section first
+          const section = document.getElementById('programs-organizations');
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          // Then open the modal after a short delay
+          setTimeout(() => {
+            this.openModal(orgKey);
+          }, 800);
+        }, 100);
+      }
+    }
   }
 
   startRotation() {

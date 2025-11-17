@@ -607,7 +607,7 @@ p {
   max-width: 800px;
   width: 90%;
   max-height: 90vh;
-  background: var(--bg-secondary);
+  background: #2d1f3a;
   border: 2px solid var(--accent);
   border-radius: 1rem;
   padding: 2.5rem;
@@ -661,7 +661,7 @@ p {
 }
 
 .carousel-modal-body h2 {
-  color: var(--accent);
+  color: #ffffff;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   text-align: center;
