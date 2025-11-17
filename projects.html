@@ -8,6 +8,7 @@
   <link rel="shortcut icon" type="image/png" href="public/logo.png">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <canvas id="background-canvas"></canvas>
@@ -41,87 +42,110 @@
       </p>
       
       <div style="display: flex; flex-direction: column; gap: 3rem;">
-        <!-- Project 1 -->
+        <!-- Project 1: Deep Learning Level Generation Platformer Game -->
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
           <div class="card">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Featured Project</span>
-              <div style="display: flex; gap: 1rem;">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">📦</a>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">🔗</a>
-              </div>
+              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">AI4ALL Fall 2025 Cohort (WIP)</span>
             </div>
-            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Project Name 1</h3>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Deep Learning Level Generation Platformer Game</h3>
             <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-              A comprehensive description of your project, what it does, and the problems it solves.
+              Trained a Variational Autoencoder (VAE) to generate playable Super Mario-style levels from Video Game Level Corpus (VGLC) dataset, achieving coherent level generation with platformer design constraints. Implemented Generative Adversarial Network (GAN) for adaptive level generation responding to player behavior through reinforcement learning. Conducted model training, evaluation, and hyperparameter tuning using train/test splits and feature importance analysis for level playability.
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">React</span>
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">TypeScript</span>
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Next.js</span>
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Tailwind CSS</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Python</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">VAE</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">GAN</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Reinforcement Learning</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Deep Learning</span>
             </div>
           </div>
           <div style="position: relative;">
             <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
             <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 4rem;">🚀</span>
+              <i class="fas fa-gamepad" style="font-size: 4rem; color: var(--accent);"></i>
             </div>
           </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 2: Orbito Game Developer -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
+          <a href="https://nyc.cs.berkeley.edu/uni/games/orbito/variants" target="_blank" rel="noopener noreferrer" style="position: relative; order: 2; text-decoration: none; cursor: pointer;">
+            <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
+            <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fas fa-puzzle-piece" style="font-size: 4rem; color: var(--accent);"></i>
+            </div>
+          </a>
+          <div class="card" style="order: 1;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">UC GameCrafters Research Group</span>
+              <div style="display: flex; gap: 1rem;">
+                <a href="https://nyc.cs.berkeley.edu/uni/games/orbito/variants" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">"Orbito" Game Developer</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              Engineered algorithms in C, JavaScript, and Python using Computational Game Theory & Discrete Math to strongly solve Orbito, enabling game AI to predict all possible moves to play perfectly. Optimized game UI across terminal and web interfaces, implementing responsive design patterns and quality-of-life features to enhance user experience and accessibility, live on GamesCrafters' website.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">C</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">JavaScript</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Python</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Game Theory</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: HotSpot App -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
+          <div class="card">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Student Startup</span>
+              <div style="display: flex; gap: 1rem;">
+                <a href="https://apps.apple.com/us/app/hotspot-be-in-the-loop/id6504424592" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">HotSpot App - iOS Social Discovery App</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+              Led end-to-end UX design and Swift development for iOS social app deployed to App Store with 100+ active Berkeley student users. Integrated MapKit API for location-based features and implemented responsive UI components translating Figma prototypes to production Swift code.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Swift</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">iOS</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">MapKit</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Figma</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">UX Design</span>
+            </div>
+          </div>
+          <a href="https://apps.apple.com/us/app/hotspot-be-in-the-loop/id6504424592" target="_blank" rel="noopener noreferrer" style="position: relative; text-decoration: none; cursor: pointer;">
+            <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
+            <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              <i class="fas fa-mobile-screen-button" style="font-size: 4rem; color: var(--accent);"></i>
+            </div>
+          </a>
+        </div>
+
+        <!-- Project 4: Backlog Clear Buddy -->
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
           <div style="position: relative; order: 2;">
             <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
             <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 4rem;">🚀</span>
+              <i class="fas fa-bullseye" style="font-size: 4rem; color: var(--accent);"></i>
             </div>
           </div>
           <div class="card" style="order: 1;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Featured Project</span>
-              <div style="display: flex; gap: 1rem;">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">📦</a>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">🔗</a>
-              </div>
+              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Vision Hack: South LA Hackathon <span style="color: var(--text-secondary);">(WIP)</span></span>
             </div>
-            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Project Name 2</h3>
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Backlog Clear Buddy</h3>
             <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-              Another project description highlighting your skills and achievements.
+              Engineered a full-stack web application using Firebase Studio, analyzed Steam game libraries via Steam API, and generated personalized weekly gaming schedules using Google Gemini API. Configured server infrastructure and end-to-end API connections, GraphQL, between Steam, Firebase and Gemini services, managing real-time data storage, user authentication, and database queries.
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Python</span>
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Flask</span>
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; align-items: center;">
-          <div class="card">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-              <span style="color: var(--accent); font-size: 0.875rem; font-family: monospace;">Featured Project</span>
-              <div style="display: flex; gap: 1rem;">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">📦</a>
-                <a href="https://example.com" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">🔗</a>
-              </div>
-            </div>
-            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">Project Name 3</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-              A third project showcasing different technologies and approaches.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Node.js</span>
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Express</span>
-              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">MongoDB</span>
-            </div>
-          </div>
-          <div style="position: relative;">
-            <div style="position: absolute; inset: 0; border: 2px solid var(--accent); border-radius: 0.5rem; transform: translate(1rem, 1rem); transition: transform 0.3s ease;"></div>
-            <div class="card" style="position: relative; height: 16rem; display: flex; align-items: center; justify-content: center;">
-              <span style="font-size: 4rem;">🚀</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Firebase</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Steam API</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">Google Gemini API</span>
+              <span style="font-size: 0.75rem; color: var(--accent); font-family: monospace;">GraphQL</span>
             </div>
           </div>
         </div>
@@ -135,10 +159,9 @@
           © <span id="current-year"></span> Allena Oglivie. All rights reserved.
         </p>
         <div class="footer-social">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">🐙</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">💼</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">🐦</a>
-          <a href="mailto:your.email@example.com" class="social-link" aria-label="Email">📧</a>
+          <a href="https://github.com/Cryphixi" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/allena-oglivie/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:ogfay05@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
     </footer>
