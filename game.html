@@ -40,24 +40,23 @@
 <body>
   <canvas id="background-canvas"></canvas>
 
-  <!-- Horizontal Navigation -->
-  <nav class="navbar-horizontal">
-    <div class="nav-container">
-      <a href="index.html" class="logo-link" aria-label="Go to homepage">
-        <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image" />
-      </a>
-      <div class="nav-links-right">
-        <a href="index.html" class="nav-link-text">Home</a>
-        <a href="about.html" class="nav-link-text">About</a>
-        <a href="projects.html" class="nav-link-text">Projects</a>
-        <a href="resume.html" class="nav-link-text">Resume</a>
-        <a href="contact.html" class="nav-link-text">Contact</a>
-          <!-- <a href="game.html" class="nav-link-text">Game</a> -->
-      </div>
+  <button class="nav-toggle-btn" id="nav-toggle-btn" aria-label="Toggle navigation" aria-expanded="true"><<</button>
+
+  <nav class="navbar" id="site-navbar">
+    <a href="index.html" class="logo-link" aria-label="Go to homepage">
+      <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link-text">Home</a>
+      <a href="about.html" class="nav-link-text">About</a>
+      <a href="projects.html" class="nav-link-text">Projects</a>
+      <a href="resume.html" class="nav-link-text">Resume</a>
+      <a href="contact.html" class="nav-link-text">Contact</a>
+      <!-- <a href="game.html" class="nav-link-text">Game</a> -->
     </div>
   </nav>
 
-  <main class="main-content-horizontal">
+  <main class="main-content">
     <div class="container animate-fade-in">
       <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem; color: var(--text-primary);">
         <span class="text-accent" style="font-family: monospace; font-size: 1.125rem;">Mini Game</span>

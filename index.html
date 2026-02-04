@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Allena Ogliivie.com</title>
+  <title>Allena Oglivie.com</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/public/logo.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/public/logo.png">
   <link rel="shortcut icon" type="image/png" href="/public/logo.png">
@@ -15,26 +15,23 @@
 <body>
   <canvas id="background-canvas"></canvas>
 
-  <!-- Horizontal Navigation with Sticky Toggle -->
-  <nav class="navbar-horizontal" id="index-navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo-link" aria-label="Go to homepage">
-        <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image-home" />
-      </a>
-      <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <div class="nav-links-right">
-          <a href="index.html" class="nav-link-text active">Home</a>
-          <a href="about.html" class="nav-link-text">About</a>
-          <a href="projects.html" class="nav-link-text">Projects</a>
-          <a href="resume.html" class="nav-link-text">Resume</a>
-          <a href="contact.html" class="nav-link-text">Contact</a>
-         <!-- <a href="game.html" class="nav-link-text">Game</a> -->
-        </div>
-      </div>
+  <button class="nav-toggle-btn" id="nav-toggle-btn" aria-label="Toggle navigation" aria-expanded="true"><<</button>
+
+  <nav class="navbar" id="site-navbar">
+    <a href="index.html" class="logo-link" aria-label="Go to homepage">
+      <img src="public/nameLogo.png" alt="Allena Oglivie logo" class="logo-image" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link-text active">Home</a>
+      <a href="about.html" class="nav-link-text">About</a>
+      <a href="projects.html" class="nav-link-text">Projects</a>
+      <a href="resume.html" class="nav-link-text">Resume</a>
+      <a href="contact.html" class="nav-link-text">Contact</a>
+      <!-- <a href="game.html" class="nav-link-text">Game</a> -->
     </div>
   </nav>
 
-  <main class="main-content-horizontal">
+  <main class="main-content">
     <!-- Hero Section -->
     <section class="container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
       <div class="animate-fade-in" style="max-width: 896px; width: 100%;">

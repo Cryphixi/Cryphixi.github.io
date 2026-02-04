@@ -24,6 +24,21 @@
       });
     });
 
+    // Sidebar collapse toggle
+    const navToggleBtn = document.getElementById('nav-toggle-btn');
+    const siteNavbar = document.getElementById('site-navbar');
+    if (navToggleBtn && siteNavbar) {
+      const isCollapsed = localStorage.getItem('nav-collapsed') === 'true';
+      updateCollapseState(isCollapsed);
+
+      navToggleBtn.addEventListener('click', () => {
+        const currentlyCollapsed = document.body.classList.contains('nav-collapsed');
+        const nextCollapsed = !currentlyCollapsed;
+        updateCollapseState(nextCollapsed);
+        localStorage.setItem('nav-collapsed', nextCollapsed.toString());
+      });
+    }
+
     // Settings dropdown (only on pages where it exists)
     const dropdownToggle = document.getElementById('settings-toggle-btn');
     const dropdownMenu = document.getElementById('settings-menu');
@@ -88,6 +103,15 @@
       stickyToggleBtn.classList.remove('active');
       if (stickyIcon) stickyIcon.textContent = '📍';
       if (stickyText) stickyText.textContent = 'Not Sticky';
+    }
+  }
+
+  function updateCollapseState(isCollapsed) {
+    const navToggleBtn = document.getElementById('nav-toggle-btn');
+    document.body.classList.toggle('nav-collapsed', isCollapsed);
+    if (navToggleBtn) {
+      navToggleBtn.setAttribute('aria-expanded', (!isCollapsed).toString());
+      navToggleBtn.textContent = isCollapsed ? '>>' : '<<';
     }
   }
 
