@@ -377,6 +377,18 @@ nav.site-nav a.active { color: var(--aster); }
 }
 .step .s-desc { font-size: 0.85rem; line-height: 1.5; color: var(--ash); }
 
+/* academic-year separators in the stepper */
+.tl-sep {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 1.1rem 0 0.35rem 2rem;
+}
+.tl-sep-line { width: 14px; height: 1px; background: var(--verdigris); flex: 0 0 auto; }
+.tl-sep-label {
+  font-family: var(--f-accent); font-style: italic;
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--verdigris);
+}
+
 /* Right — polaroid snapshot panel */
 .snapshot { flex: 1 1 auto; min-width: 0; max-width: 780px; display: flex; flex-direction: column; }
 .polaroid {
@@ -556,6 +568,14 @@ nav.site-nav a.active { color: var(--aster); }
 .proj-card .p-desc { font-size: 0.9rem; color: var(--ash); line-height: 1.55; margin-bottom: 1rem; }
 .proj-card .p-link {
   margin-top: auto;
+  font-family: var(--f-accent); font-style: italic;
+  font-size: 0.85rem; letter-spacing: 0.04em;
+}
+.proj-card .p-links {
+  margin-top: auto;
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.proj-card .p-links a {
   font-family: var(--f-accent); font-style: italic;
   font-size: 0.85rem; letter-spacing: 0.04em;
 }

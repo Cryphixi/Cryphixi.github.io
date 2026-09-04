@@ -13,13 +13,17 @@
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Timeline is data-driven: add an entry and the section grows automatically.
+  // `group` is the academic-year separator each entry sits under (newest first).
+  // Entries stay in newest-first order; keep each group's entries contiguous.
+  // NOTE: the group labels below are a best guess — adjust to match reality.
   var ENTRIES = [
-    { date: '2026 — Present', title: 'GMG x 2K Mentorship Program', desc: "Paired with mentors from 2K's Engineering Grad Program." },
-    { date: '2025 — Present', title: 'Website Team Lead — GamesCrafters', desc: "Led a full UI overhaul of the group's interactable games research website." },
-    { date: '2023', title: 'GMG College Scholarship Recipient', desc: '2023 scholarship recipient supporting continued work in game development.' },
-    { date: '2023 — 2024', title: 'CS184: Computer Graphics', desc: 'Rasterizer, MeshEdit, PathTracer, Cloth Simulation, and "Snowfall."' },
-    { date: 'Sophomore Year', title: 'Title Info — Org', desc: 'Description of responsibilities and duties.' },
-    { date: 'Freshman Year', title: 'iD Tech — Job Info', desc: 'Description of responsibilities, duties.' }
+    { group: 'Senior Year',    date: '2026 — Present', title: 'GMG x 2K Mentorship Program', desc: "Paired with mentors from 2K's Engineering Grad Program." },
+    { group: 'Senior Year',    date: '2025 — Present', title: 'Website Team Lead — GamesCrafters', desc: "Led a full UI overhaul of the group's interactable games research website." },
+    { group: 'Junior Year',    date: '2023', title: 'GMG College Scholarship Recipient', desc: '2023 scholarship recipient supporting continued work in game development.' },
+    { group: 'Sophomore Year', date: '2023 — 2024', title: 'CS184: Computer Graphics', desc: 'Rasterizer, MeshEdit, PathTracer, Cloth Simulation, and "Snowfall."' },
+    { group: 'Sophomore Year', date: 'Sophomore Year', title: 'Title Info — Org', desc: 'Description of responsibilities and duties.' },
+    { group: 'Freshman Year',  date: 'Freshman Year', title: 'iD Tech — Job Info', desc: 'Description of responsibilities, duties.' }
   ];
 
   var N = ENTRIES.length;
@@ -47,9 +51,18 @@
 
   function p2(n) { return String(n).padStart(2, '0'); }
 
-  // ---------- build steps ----------
+  // ---------- build steps (with academic-year separators) ----------
   var stepEls = [];
+  var lastGroup = null;
   ENTRIES.forEach(function (e, i) {
+    if (e.group && e.group !== lastGroup) {
+      var sep = document.createElement('div');
+      sep.className = 'tl-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.innerHTML = '<span class="tl-sep-line"></span><span class="tl-sep-label">' + e.group + '</span>';
+      track.appendChild(sep);
+      lastGroup = e.group;
+    }
     var b = document.createElement('button');
     b.type = 'button';
     b.className = 'step';
