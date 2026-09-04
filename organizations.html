@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume — Allena Oglivie</title>
+  <title>Organizations — Allena Oglivie</title>
   <link rel="icon" type="image/png" href="public/logo.png">
   <link rel="apple-touch-icon" href="public/logo.png">
   <link rel="stylesheet" href="css/fonts.css">
@@ -15,37 +15,25 @@
 
   <nav class="site-nav" aria-label="Primary">
     <a href="index.html">Home</a>
-    <a href="resume.html" class="active">Resume</a>
+    <a href="resume.html">Resume</a>
     <a href="index.html#projects">Projects</a>
-    <a href="organizations.html">Organizations</a>
+    <a href="organizations.html" class="active">Organizations</a>
     <a href="socials.html">Socials</a>
   </nav>
   <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
 
   <main>
-    <header class="page-head" style="max-width:700px;">
-      <h1>Resume</h1>
-      <p class="subhead">the short version, and the PDF</p>
+    <header class="page-head">
+      <h1>Organizations</h1>
+      <p class="subhead">the programs and communities that helped me grow — select one to read more</p>
       <div class="section-rule" aria-hidden="true"></div>
     </header>
 
-    <section class="resume-wrap">
-      <div class="doc-frame">
-        <div class="doc-page" aria-hidden="true">
-          <div class="bar title"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar short"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar short"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar short"></div>
-          <div class="bar"></div>
-        </div>
+    <section class="orgs-wrap" id="orgs">
+      <div class="orgs-grid">
+        <div class="org-index"><!-- rows injected by orgs.js --></div>
+        <div class="org-stack"><!-- cards injected by orgs.js --></div>
       </div>
-      <a class="outline-link" href="Allena_Oglivie_Resume.pdf" target="_blank" rel="noopener">Download PDF &#8594;</a>
     </section>
 
     <footer class="site-footer">
@@ -63,5 +51,6 @@
   </main>
 
   <script src="js/shell.js"></script>
+  <script src="js/orgs.js"></script>
 </body>
 </html>
