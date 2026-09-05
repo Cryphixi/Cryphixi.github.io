@@ -84,7 +84,6 @@
     b.setAttribute('data-step', String(i));
     b.innerHTML =
       '<span class="dot"></span>' +
-      '<div class="s-date">' + esc(e.date) + '</div>' +
       '<div class="s-title">' + esc(e.title) + '</div>' +
       '<div class="s-desc">' + esc(e.desc) + '</div>';
     b.addEventListener('click', function () {
