@@ -292,7 +292,7 @@ nav.site-nav a.active { color: var(--aster); }
    right that follows the active entry. Scales to any number of milestones and
    grows automatically as entries are added. */
 .journey { position: relative; z-index: 2; max-width: 1300px; margin: 0 auto; padding: 1rem 3rem 3rem; }
-.journey-grid { display: grid; grid-template-columns: 430px 1fr; gap: 4.5rem; align-items: stretch; }
+.journey-grid { display: grid; grid-template-columns: 460px minmax(0, 480px); gap: 4rem; justify-content: center; align-items: stretch; }
 
 /* Left — scrolling milestone list */
 .tl-list { position: relative; padding-left: 0; }
@@ -336,7 +336,7 @@ nav.site-nav a.active { color: var(--aster); }
 
 /* Right — sticky polaroid snapshot */
 .tl-aside { position: relative; }
-.tl-aside .polaroid { position: sticky; top: 14vh; max-width: 440px; margin: 0 auto; }
+.tl-aside .polaroid { position: sticky; top: 10vh; max-width: 480px; margin: 0; }
 .step .s-date {
   font-family: var(--f-accent);
   font-style: italic;
