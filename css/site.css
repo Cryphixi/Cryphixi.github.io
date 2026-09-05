@@ -291,36 +291,14 @@ nav.site-nav a.active { color: var(--aster); }
    JOURNEY TIMELINE (pinned scroll)
    ============================================================ */
 
-.timeline-spacer { position: relative; }
-.timeline-stage {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-/* faint center-column starfield inside the stage only */
-.stage-stars { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
-.stage-stars .star { background: #eee9ff; animation-name: twinkle-faint; animation-duration: 8s; }
+/* Layout: a scrolling milestone list on the left, a sticky polaroid on the
+   right that follows the active entry. Scales to any number of milestones and
+   grows automatically as entries are added. */
+.journey { position: relative; z-index: 2; max-width: 1300px; margin: 0 auto; padding: 1rem 3rem 3rem; }
+.journey-grid { display: grid; grid-template-columns: 430px 1fr; gap: 4.5rem; align-items: stretch; }
 
-.timeline-layout {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 4.5rem;
-  flex: 0 0 auto;
-  width: 1300px;
-  padding: 0 3rem;
-  transform-origin: center center;
-}
-
-/* Left — stepper */
-.stepper { flex: 0 0 auto; width: 400px; }
-.track { position: relative; margin-left: 6px; }
+/* Left — scrolling milestone list */
+.tl-list { position: relative; padding-left: 6px; }
 .living-line {
   position: absolute;
   left: -1px; top: 0; bottom: 0;
@@ -331,14 +309,6 @@ nav.site-nav a.active { color: var(--aster); }
   animation: journey-flow 11s linear infinite;
 }
 @keyframes journey-flow { 0% { background-position-y: 0; } 100% { background-position-y: 440px; } }
-.active-marker {
-  position: absolute;
-  left: -1px;
-  width: 2px;
-  background: var(--marker-bright);
-  box-shadow: 0 0 10px rgba(201, 188, 240, 0.55);
-  transition: top 0.45s cubic-bezier(.33,1,.68,1), height 0.45s cubic-bezier(.33,1,.68,1);
-}
 .step {
   position: relative;
   padding: 1.15rem 0 1.15rem 2rem;
@@ -349,16 +319,27 @@ nav.site-nav a.active { color: var(--aster); }
   display: block;
   width: 100%;
   font-family: inherit;
+  opacity: 0.4;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
+.step.active { opacity: 1; }
 .step .dot {
   position: absolute;
-  left: -5px; top: 1.57rem;
+  left: -5px; top: 1.62rem;
   width: 9px; height: 9px;
   background: var(--line);
   transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
   transform: rotate(45deg) scale(0.85);
 }
+.step.active .dot {
+  background: var(--aster);
+  box-shadow: 0 0 10px rgba(201, 188, 240, 0.5);
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* Right — sticky polaroid snapshot */
+.tl-aside { position: relative; }
+.tl-aside .polaroid { position: sticky; top: 13vh; max-width: 660px; }
 .step .s-date {
   font-family: var(--f-accent);
   font-style: italic;
@@ -782,6 +763,9 @@ nav.site-nav a.active { color: var(--aster); }
   nav.site-nav { gap: 1.4rem; font-size: 0.92rem; padding: 1.2rem 1rem; flex-wrap: wrap; }
   .hero-name { font-size: 3rem; }
   .page-head { padding: 6.5rem 1.5rem 1.5rem; }
+  .journey { padding: 1rem 1.5rem 3rem; }
+  .journey-grid { grid-template-columns: 1fr; gap: 0; }
+  .tl-aside { display: none; } /* the list carries the story on narrow screens */
   .orgs-wrap { padding: 0 1.5rem 5rem; }
   .orgs-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   /* stacked org cards: static flow, no absolute overlap, no idle animation */

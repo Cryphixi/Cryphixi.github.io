@@ -45,42 +45,36 @@
       <p class="cue" id="tl-cue">scroll to move through the milestones &#8595;</p>
     </section>
 
-    <!-- Pinned Journey timeline -->
-    <div class="timeline-spacer" id="tl-spacer">
-      <div class="timeline-stage">
-        <div class="stage-stars" aria-hidden="true"></div>
-        <div class="timeline-layout" id="tl-layout">
-          <div class="stepper">
-            <div class="track" id="tl-track">
-              <div class="living-line" aria-hidden="true"></div>
-              <div class="active-marker" id="tl-marker" aria-hidden="true"></div>
-              <!-- steps injected by timeline.js -->
+    <!-- Journey timeline: scrolling list + sticky polaroid -->
+    <section class="journey" id="tl-section">
+      <div class="journey-grid">
+        <div class="tl-list" id="tl-track">
+          <div class="living-line" aria-hidden="true"></div>
+          <!-- steps + year separators injected by timeline.js -->
+        </div>
+        <div class="tl-aside">
+          <div class="polaroid">
+            <div class="ledger-head">
+              <span class="diamond" aria-hidden="true"></span>
+              <span class="index" id="tl-index">01 / 01</span>
+              <span class="rule" aria-hidden="true"></span>
+              <span class="cap-date" id="tl-capdate"></span>
             </div>
-          </div>
-          <div class="snapshot">
-            <div class="polaroid">
-              <div class="ledger-head">
-                <span class="diamond" aria-hidden="true"></span>
-                <span class="index" id="tl-index">01 / 06</span>
-                <span class="rule" aria-hidden="true"></span>
-                <span class="cap-date" id="tl-capdate"></span>
-              </div>
-              <div class="image-well" id="tl-well">
-                <span class="crop tl-h"></span><span class="crop tl-v"></span>
-                <span class="crop tr-h"></span><span class="crop tr-v"></span>
-                <span class="crop bl-h"></span><span class="crop bl-v"></span>
-                <span class="crop br-h"></span><span class="crop br-v"></span>
-                <!-- frames injected by timeline.js -->
-              </div>
-              <div class="caption" id="tl-caption">
-                <div class="c-title"></div>
-                <div class="c-note"></div>
-              </div>
+            <div class="image-well" id="tl-well">
+              <span class="crop tl-h"></span><span class="crop tl-v"></span>
+              <span class="crop tr-h"></span><span class="crop tr-v"></span>
+              <span class="crop bl-h"></span><span class="crop bl-v"></span>
+              <span class="crop br-h"></span><span class="crop br-v"></span>
+              <!-- frames injected by timeline.js -->
+            </div>
+            <div class="caption" id="tl-caption">
+              <div class="c-title"></div>
+              <div class="c-note"></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <div class="scroll-rail" id="tl-rail" aria-hidden="true"><div class="fill"></div></div>
     <div class="hud" id="tl-hud" aria-hidden="true"></div>
