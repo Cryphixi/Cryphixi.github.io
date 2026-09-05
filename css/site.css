@@ -298,10 +298,10 @@ nav.site-nav a.active { color: var(--aster); }
 .journey-grid { display: grid; grid-template-columns: 430px 1fr; gap: 4.5rem; align-items: stretch; }
 
 /* Left — scrolling milestone list */
-.tl-list { position: relative; padding-left: 6px; }
+.tl-list { position: relative; padding-left: 0; }
 .living-line {
   position: absolute;
-  left: -1px; top: 0; bottom: 0;
+  left: 6px; top: 0; bottom: 0;
   width: 1px;
   background-image: linear-gradient(180deg, #3b3358 0%, #8f7fd1 24%, #efeaff 42%, #8f7fd1 60%, #3b3358 100%);
   background-size: 100% 440px;
@@ -311,7 +311,7 @@ nav.site-nav a.active { color: var(--aster); }
 @keyframes journey-flow { 0% { background-position-y: 0; } 100% { background-position-y: 440px; } }
 .step {
   position: relative;
-  padding: 1.15rem 0 1.15rem 2rem;
+  padding: 1.15rem 0 1.15rem 2.5rem;
   cursor: pointer;
   background: none;
   border: none;
@@ -325,7 +325,7 @@ nav.site-nav a.active { color: var(--aster); }
 .step.active { opacity: 1; }
 .step .dot {
   position: absolute;
-  left: -5px; top: 1.62rem;
+  left: 2px; top: 1.5rem;
   width: 9px; height: 9px;
   background: var(--line);
   transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
@@ -339,7 +339,7 @@ nav.site-nav a.active { color: var(--aster); }
 
 /* Right — sticky polaroid snapshot */
 .tl-aside { position: relative; }
-.tl-aside .polaroid { position: sticky; top: 13vh; max-width: 660px; }
+.tl-aside .polaroid { position: sticky; top: 12vh; max-width: 560px; }
 .step .s-date {
   font-family: var(--f-accent);
   font-style: italic;
@@ -361,7 +361,7 @@ nav.site-nav a.active { color: var(--aster); }
 /* academic-year separators in the stepper */
 .tl-sep {
   display: flex; align-items: center; gap: 0.7rem;
-  padding: 1.1rem 0 0.35rem 2rem;
+  padding: 1.1rem 0 0.35rem 2.5rem;
 }
 .tl-sep-line { width: 14px; height: 1px; background: var(--verdigris); flex: 0 0 auto; }
 .tl-sep-label {
@@ -402,7 +402,7 @@ nav.site-nav a.active { color: var(--aster); }
 .image-well {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--well);
 }
