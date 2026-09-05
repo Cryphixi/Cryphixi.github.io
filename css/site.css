@@ -199,16 +199,12 @@ nav.site-nav a.active { color: var(--aster); }
   padding: 9rem 1.5rem 3rem;
 }
 .hero .logo-mark {
-  width: 52px; height: 52px;
-  border: 1px solid #8b7bc0;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--f-head);
-  font-size: 1.1rem;
-  letter-spacing: 0.06em;
-  color: var(--lavender-soft);
-  margin-bottom: 2rem;
+  width: 130px;
+  margin-bottom: 1.4rem;
+  display: flex;
+  justify-content: center;
 }
+.hero .logo-mark img { width: 100%; height: auto; display: block; }
 .hero-name {
   font-family: var(--f-script);
   font-size: 4.2rem;
@@ -245,8 +241,9 @@ nav.site-nav a.active { color: var(--aster); }
   padding: 1rem 1.5rem 2rem;
 }
 .profile-photo {
-  width: 168px; height: 168px;
-  border-radius: 50%;
+  position: relative;
+  width: 190px; height: 190px;
+  border-radius: 0;
   background: var(--photo);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--f-accent);
@@ -339,7 +336,7 @@ nav.site-nav a.active { color: var(--aster); }
 
 /* Right — sticky polaroid snapshot */
 .tl-aside { position: relative; }
-.tl-aside .polaroid { position: sticky; top: 12vh; max-width: 560px; }
+.tl-aside .polaroid { position: sticky; top: 14vh; max-width: 440px; margin: 0 auto; }
 .step .s-date {
   font-family: var(--f-accent);
   font-style: italic;
@@ -574,12 +571,8 @@ nav.site-nav a.active { color: var(--aster); }
 }
 .footer-stars { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
 .footer-inner { position: relative; z-index: 2; }
-.footer-mark {
-  font-family: var(--f-script);
-  font-size: 1.7rem;
-  color: var(--ash);
-  margin-bottom: 1.2rem;
-}
+.footer-mark { width: 230px; margin: 0 auto 1.2rem; }
+.footer-mark img { width: 100%; height: auto; display: block; margin: 0 auto; }
 .footer-links {
   display: flex; justify-content: center; flex-wrap: wrap;
   gap: 2rem;
