@@ -9,7 +9,13 @@
      date     - shown in the polaroid header only (not repeated per-entry in the list)
      title    - milestone title
      desc     - one-line description
-     img      - optional path to a real photo/screenshot (public/timeline/...)
+     img      - optional path to a single real photo/screenshot (public/timeline/...)
+     images   - optional array of paths; when there is more than one, they
+                crossfade in a slow slideshow (~1 min per image, looping),
+                always restarting at the first image when the milestone
+                becomes active. Use instead of `img` for multi-photo folders.
+     video    - optional { id: '<YouTube video id>' } — shows the video's
+                thumbnail with a play control; click swaps in the real embed.
      noImage  - optional; true renders a deliberately blank photo slot (no placeholder text)
      note     - optional extra italic line shown under the description in the polaroid
      links    - optional array of {label, url} shown as "label ->" under the caption
@@ -24,6 +30,7 @@
 
   var T = 'public/timeline/';
   var O = 'public/organizations/';
+  var SLIDE_DWELL = 60000; // ~1 minute per image in a multi-photo slideshow
 
   // Order matters — this is Allena's timeline, newest first.
   var ENTRIES = [
@@ -48,7 +55,9 @@
     { group: 'Junior Year · 2025', date: '2025', title: 'Grace Hopper Celebration — Fall 2025', desc: 'Attended through the UC Berkeley EECS scholarship.', img: T + 'ghc25.jpg' },
     { group: 'Junior Year · 2025', date: '2025', title: 'GamesCrafters — Game Developer', desc: 'Game developer. Strongly solved Orbito and brought it online.', img: T + 'gc-orbito.png' },
     { group: 'Junior Year · 2025', date: '2025', title: 'Cal Marginalized Genders in Gaming — Website Designer', desc: 'Website designer for CMGG.', img: T + 'cmgg-webdev.png' },
+    { group: 'Junior Year · 2025', date: '2025', title: 'CalSTEM Work', desc: 'Joined a team advocating for accessible STEM education.', img: T + 'calstem-pulse.png' },
     { group: 'Junior Year · 2025', date: '2025', title: 'GMG College Scholarship Recipient', desc: '2023 scholarship recipient supporting continued work in game development.',
+      images: [T + 'gmg-scholar/shot1.png', T + 'gmg-scholar/shot2.png', T + 'gmg-scholar/shot3.png'],
       links: [{ label: 'View announcement', url: 'https://www.gmgsf.org/2023-college-scholarship-winners' }] },
     { group: 'Junior Year · 2025', date: '2025', title: 'CS61C: Computer Architecture', desc: 'Machine structures and computer architecture.', noImage: true },
 
@@ -69,7 +78,10 @@
     { group: 'High School Senior', date: '2022 — 2023', title: 'Girls Make Games Scholarship Recipient', desc: 'Awarded the Girls Make Games scholarship.', img: O + 'girls-make-games.png' },
     { group: 'High School Senior', date: '2022 — 2023', title: 'African American Initiative Scholarship Recipient', desc: 'Cal Alumni Association African American Initiative scholarship.', img: O + 'cal-alumni-african-american.png' },
     { group: 'High School Senior', date: '2022 — 2023', title: 'America On Tech', desc: 'Joined America On Tech.',
-      links: [{ label: 'View Night View', url: 'https://cryphixi.github.io/NIght-View/' }] }
+      images: [T + 'aot-joined/photo.jpeg', T + 'aot-joined/nightview-screenshot.png'],
+      links: [{ label: 'View Night View', url: 'https://cryphixi.github.io/NIght-View/' }] },
+    { group: 'High School Senior', date: '2022 — 2023', title: 'Founded Alexander Hamilton Senior High E-Sports Team', desc: "Founded and led the school's first Esports team.",
+      video: { id: 'dAiiObRnN5M' } }
   ];
 
   var N = ENTRIES.length;
@@ -91,7 +103,9 @@
 
   // ---------- build list (steps + year separators) ----------
   var stepEls = [], frameEls = [];
+  var slideState = {}; // index -> { slides: [el,...], cur: 0, timer: null }
   var lastGroup = null;
+
   ENTRIES.forEach(function (e, i) {
     if (e.group && e.group !== lastGroup) {
       var sep = document.createElement('div');
@@ -115,20 +129,84 @@
 
     var f = document.createElement('div');
     f.className = 'frame';
-    if (e.img) {
+
+    if (e.video) {
+      buildVideoFrame(f, e);
+    } else if (e.images && e.images.length > 1) {
+      var slides = e.images.map(function (src, k) {
+        var img = document.createElement('img');
+        img.className = 'slide' + (k === 0 ? ' show' : '');
+        img.src = src;
+        img.alt = e.title;
+        img.loading = 'lazy';
+        f.appendChild(img);
+        return img;
+      });
+      slideState[i] = { slides: slides, cur: 0, timer: null };
+    } else if (e.images && e.images.length === 1) {
+      f.innerHTML = '<img src="' + e.images[0] + '" alt="' + esc(e.title) + '" loading="lazy">';
+    } else if (e.img) {
       f.innerHTML = '<img src="' + e.img + '" alt="' + esc(e.title) + '" loading="lazy">';
     } else if (e.noImage) {
       f.classList.add('frame-blank');
     } else {
       f.innerHTML = '<span>' + esc(e.title) + ' — image</span>';
     }
+
     well.insertBefore(f, well.firstChild); // keep crop marks on top
     frameEls.push(f);
   });
 
+  // ---------- video frame: thumbnail + play control, swaps to a live embed ----------
+  function buildVideoFrame(f, e) {
+    f.classList.add('frame-video');
+    var thumb = document.createElement('img');
+    thumb.src = 'https://img.youtube.com/vi/' + e.video.id + '/hqdefault.jpg';
+    thumb.alt = e.title + ' — video thumbnail';
+    thumb.loading = 'lazy';
+    var play = document.createElement('button');
+    play.type = 'button';
+    play.className = 'video-play';
+    play.setAttribute('aria-label', 'Play video');
+    play.innerHTML = '&#9658;';
+    play.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + e.video.id + '?autoplay=1';
+      iframe.title = e.title;
+      iframe.frameBorder = '0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      f.innerHTML = '';
+      f.appendChild(iframe);
+    });
+    f.appendChild(thumb);
+    f.appendChild(play);
+  }
+
+  // ---------- multi-image slideshow: always restarts at slide 0 when a
+  // milestone becomes active, then crossfades through the rest on a loop. ----------
+  function startSlideshow(i) {
+    var s = slideState[i];
+    if (!s || reduce) return;
+    stopSlideshow(i);
+    s.cur = 0;
+    s.slides.forEach(function (el, k) { el.classList.toggle('show', k === 0); });
+    s.timer = setInterval(function () {
+      var next = (s.cur + 1) % s.slides.length;
+      s.slides[s.cur].classList.remove('show');
+      s.slides[next].classList.add('show');
+      s.cur = next;
+    }, SLIDE_DWELL);
+  }
+  function stopSlideshow(i) {
+    var s = slideState[i];
+    if (s && s.timer) { clearInterval(s.timer); s.timer = null; }
+  }
+
   if (reduce) {
     var noTrans = document.createElement('style');
-    noTrans.textContent = '.step,.frame,.caption,.ledger-head .cap-date{transition:none!important}';
+    noTrans.textContent = '.step,.frame,.caption,.ledger-head .cap-date,.frame .slide{transition:none!important}';
     document.head.appendChild(noTrans);
   }
 
@@ -146,6 +224,7 @@
   var active = -1;
   function setActive(i) {
     if (i === active) return;
+    if (active !== -1) stopSlideshow(active);
     active = i;
     stepEls.forEach(function (el, k) { el.classList.toggle('active', k === i); });
     frameEls.forEach(function (el, k) {
@@ -153,6 +232,7 @@
       el.style.transform = 'scale(' + (k === i ? 1 : 0.988) + ')';
       el.style.zIndex = k === i ? 2 : 1;
     });
+    startSlideshow(i);
     var e = ENTRIES[i];
     if (capTitle) capTitle.textContent = e.title;
     if (capNote) capNote.textContent = e.desc;
