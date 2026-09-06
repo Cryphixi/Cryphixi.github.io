@@ -64,6 +64,9 @@
   var navOverride = null;   // null = use automatic rule; true/false = explicit
   var idleHidden = false;
   var idleTimer = null;
+  var lastY = window.scrollY || 0;
+  var scrollDir = 'up';     // 'up' reveals the nav, 'down' closes it
+  var wasPastHero = false;  // detects the moment we cross into "past hero" territory
 
   function armIdle() {
     if (idleTimer) clearTimeout(idleTimer);
@@ -79,8 +82,13 @@
 
   function baseVisible(y) {
     if (navOverride !== null) return navOverride;
-    if (hasHero) return y > 0.6 * heroH;
-    return true;
+    var pastHero = !hasHero || y > 0.6 * heroH;
+    if (!pastHero) { wasPastHero = false; return false; }
+    if (!hasHero && y <= 24) return true; // top of a hero-less page: keep it visible
+    var justCrossed = !wasPastHero;
+    wasPastHero = true;
+    if (justCrossed) return true; // reveal once, whichever direction got us here
+    return scrollDir === 'up';
   }
   function applyNav() {
     if (!nav) return;
@@ -144,6 +152,11 @@
     ticking = true;
     requestAnimationFrame(function () {
       var y = window.scrollY || 0;
+      var dy = y - lastY;
+      if (Math.abs(dy) > 4) {
+        scrollDir = dy > 0 ? 'down' : 'up';
+        lastY = y;
+      }
       if (toggle) toggle.classList.toggle('dim', y > 40);
       applyNav();
       updateBg(y);

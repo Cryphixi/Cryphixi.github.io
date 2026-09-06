@@ -23,6 +23,11 @@
      logoDark - optional; like `logo`, but keeps the plate's own dark
                 background instead of a light card — use for marks drawn
                 as white/transparent line art for a dark ground
+     fit      - optional; true scales `img` to fit in full (object-fit:
+                contain) on the plate's own dark ground, no card — use for
+                screenshots/documents/renders whose whole composition
+                matters (as opposed to a candid photo, which should fill
+                the frame edge-to-edge via the default cover treatment)
      note     - optional extra italic line shown under the description in the polaroid
      links    - optional array of {label, url} shown as "label ->" under the caption
    ============================================================ */
@@ -41,9 +46,9 @@
   // Order matters — this is Allena's timeline, newest first.
   var ENTRIES = [
     // ---- Senior Year 2026 ----
-    { group: 'Senior Year · 2026', date: '2026', title: 'CS180: Intro to Computer Vision & Computational Photography', desc: 'Computer vision and computational photography coursework.', img: T + 'cs180.png' },
-    { group: 'Senior Year · 2026', date: '2026', title: 'CS160: User Interface Design and Development', desc: 'User interface design and development coursework.', img: T + 'cs160.png' },
-    { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Fellowship — Counselor', desc: 'Counselor for the Girls Make Games fellowship.', img: T + 'gmg-counselor.png' },
+    { group: 'Senior Year · 2026', date: '2026', title: 'CS180: Intro to Computer Vision & Computational Photography', desc: 'Computer vision and computational photography coursework.', img: T + 'cs180.png', fit: true },
+    { group: 'Senior Year · 2026', date: '2026', title: 'CS160: User Interface Design and Development', desc: 'User interface design and development coursework.', img: T + 'cs160.png', fit: true },
+    { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Fellowship — Counselor', desc: 'Counselor for the Girls Make Games fellowship.', img: T + 'gmg-counselor.png', fit: true },
     { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Mentorship', desc: 'Mentorship program. Projects: Canopy and Menses.', img: T + 'gmg-mentorship-logo.png', logo: true },
 
     // ---- Junior Year 2025 ----
@@ -55,11 +60,11 @@
       note: 'Had the privilege to meet the amazing Darren Korb!' },
     { group: 'Junior Year · 2025', date: '2025', title: 'AI4ALL Machine Learning Fellowship', desc: 'Machine learning fellowship. Project: LevelForger.', img: O + 'ai4all.png', logo: true },
     { group: 'Junior Year · 2025', date: '2025', title: 'America On Tech — Data Science Fellowship', desc: 'Year-long data science fellowship.', img: O + 'america-on-tech.png', logo: true },
-    { group: 'Junior Year · 2025', date: '2025', title: 'Inheritance Lines', desc: 'Narrative-driven game exploring what gets passed down.', img: T + 'inheritance-lines-cover.png' },
+    { group: 'Junior Year · 2025', date: '2025', title: 'Inheritance Lines', desc: 'Narrative-driven game exploring what gets passed down.', img: T + 'inheritance-lines-cover.png', fit: true },
     { group: 'Junior Year · 2025', date: '2025', title: 'Grace Hopper Celebration — Fall 2025', desc: 'Attended through the UC Berkeley EECS scholarship.', img: T + 'ghc25.jpg' },
     { group: 'Junior Year · 2025', date: '2025', title: 'GamesCrafters — Game Developer', desc: 'Game developer. Strongly solved Orbito and brought it online.', img: T + 'gc-orbito.png' },
-    { group: 'Junior Year · 2025', date: '2025', title: 'Cal Marginalized Genders in Gaming — Website Designer', desc: 'Website designer for CMGG.', img: T + 'cmgg-webdev.png' },
-    { group: 'Junior Year · 2025', date: '2025', title: 'CalSTEM Work', desc: 'Joined a team advocating for accessible STEM education.', img: T + 'calstem-pulse.png',
+    { group: 'Junior Year · 2025', date: '2025', title: 'Cal Marginalized Genders in Gaming — Website Designer', desc: 'Website designer for CMGG.', img: T + 'cmgg-webdev.png', fit: true },
+    { group: 'Junior Year · 2025', date: '2025', title: 'CalSTEM Work', desc: 'Joined a team advocating for accessible STEM education.', img: T + 'calstem-pulse.png', fit: true,
       note: 'Also taught a Learn Basic Tech course on Retrieval-Augmented Generation.',
       links: [{ label: 'View course', url: 'https://www.learnbasictech.org/courses/retrieval-augmented-generation' }] },
     { group: 'Junior Year · 2025', date: '2025', title: 'CS61C: Computer Architecture', desc: 'Machine structures and computer architecture.', noImage: true },
@@ -77,7 +82,7 @@
     { group: 'Freshman Year · 2023', date: '2023', title: 'CS61A: Structure and Interpretation of Computer Programs', desc: 'Introduction to computer science.', noImage: true },
 
     // ---- Before UC Berkeley ----
-    { group: 'High School Senior', date: '2022 — 2023', title: 'Accenture — Internship', desc: 'High school internship at Accenture.' },
+    { group: 'High School Senior', date: '2022 — 2023', title: 'Accenture — Internship', desc: 'High school internship at Accenture.', img: T + 'accenture-logo.png', logo: true },
     { group: 'High School Senior', date: '2022 — 2023', title: 'Girls Make Games Scholarship Recipient', desc: '2023 scholarship recipient supporting continued work in game development.',
       images: [T + 'gmg-scholar/shot1.png', T + 'gmg-scholar/shot2.png', T + 'gmg-scholar/shot3.png'],
       links: [{ label: 'View announcement', url: 'https://www.gmgsf.org/2023-college-scholarship-winners' }] },
@@ -153,6 +158,7 @@
     } else if (e.img) {
       if (e.logo) f.classList.add('frame-logo');
       else if (e.logoDark) f.classList.add('frame-logo-dark');
+      else if (e.fit) f.classList.add('frame-fit');
       f.innerHTML = '<img src="' + e.img + '" alt="' + esc(e.title) + '" loading="lazy">';
     } else if (e.noImage) {
       f.classList.add('frame-blank');
