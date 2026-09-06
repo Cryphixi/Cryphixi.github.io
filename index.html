@@ -39,7 +39,10 @@
           <span class="crop tr-h"></span><span class="crop tr-v"></span>
           <span class="crop bl-h"></span><span class="crop bl-v"></span>
           <span class="crop br-h"></span><span class="crop br-v"></span>
-          profile photo
+          <img src="public/profile-portrait.jpg" alt="Allena Oglivie"
+               onload="this.parentElement.classList.add('has-photo')"
+               onerror="this.remove()">
+          <span class="ph-fallback">profile photo</span>
         </div>
       </section>
     </div>
@@ -76,6 +79,8 @@
             <div class="caption" id="tl-caption">
               <div class="c-title"></div>
               <div class="c-note"></div>
+              <div class="c-photo-note" hidden></div>
+              <div class="c-links" hidden></div>
             </div>
           </div>
         </div>

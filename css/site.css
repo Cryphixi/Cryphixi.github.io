@@ -252,7 +252,15 @@ nav.site-nav a.active { color: var(--aster); }
   color: var(--ash);
   overflow: hidden;
 }
-.profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+/* contain, not cover — the photo must sit whole, never cropped */
+.profile-photo img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+.profile-photo .ph-fallback { position: relative; z-index: 0; }
+.profile-photo.has-photo .ph-fallback { display: none; }
 
 /* ============================================================
    JOURNEY INTRO
@@ -437,6 +445,20 @@ nav.site-nav a.active { color: var(--aster); }
   font-family: var(--f-accent); font-style: italic;
   font-size: 0.86rem; color: #c4bacb; text-wrap: pretty;
 }
+.caption .c-photo-note {
+  margin-top: 0.6rem;
+  font-family: var(--f-accent); font-style: italic;
+  font-size: 0.8rem; color: var(--orchid); text-wrap: pretty;
+}
+.caption .c-links {
+  margin-top: 0.7rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1rem;
+}
+.caption .c-links a {
+  font-family: var(--f-accent); font-style: italic;
+  font-size: 0.82rem; letter-spacing: 0.02em;
+}
+.frame.frame-blank { background: var(--well); }
 
 /* scroll rail (home only) */
 .scroll-rail {
