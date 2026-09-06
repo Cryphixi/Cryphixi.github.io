@@ -360,7 +360,7 @@ nav.site-nav a.active { color: var(--aster); }
 
 /* Right — sticky polaroid snapshot */
 .tl-aside { position: relative; }
-.tl-aside .polaroid { position: sticky; top: 14vh; max-width: 400px; margin: 0; }
+.tl-aside .polaroid { position: sticky; top: 6vh; max-width: 600px; margin: 0; }
 .step .s-date {
   font-family: var(--f-accent);
   font-style: italic;
@@ -599,6 +599,7 @@ nav.site-nav a.active { color: var(--aster); }
   padding: 1.6rem;
   background: var(--card);
   display: flex; flex-direction: column;
+  border: 1px solid rgba(143, 127, 209, 0.34);
 }
 .proj-card .thumb {
   width: 100%; aspect-ratio: 16 / 9;
