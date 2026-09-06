@@ -20,6 +20,9 @@
      logo     - optional; true renders `img` on a light card, scaled to fit in
                 full (object-fit: contain) instead of the photo-fill cover
                 treatment — use for organization/company marks
+     logoDark - optional; like `logo`, but keeps the plate's own dark
+                background instead of a light card — use for marks drawn
+                as white/transparent line art for a dark ground
      note     - optional extra italic line shown under the description in the polaroid
      links    - optional array of {label, url} shown as "label ->" under the caption
    ============================================================ */
@@ -68,12 +71,12 @@
     { group: 'Sophomore Year · 2024', date: '2024', title: 'EOP SSS STEM Scholar', desc: 'Scholarship recipient.', img: T + 'sss-stem-scholar.jpg' },
     { group: 'Sophomore Year · 2024', date: '2024', title: 'CS70: Discrete Mathematics', desc: 'Discrete mathematics and probability theory.', noImage: true },
     { group: 'Sophomore Year · 2024', date: '2024', title: 'Game Developers Conference 2025', desc: 'Attended through the Girls Make Games scholarship.', img: T + 'gdc25.jpg' },
-    { group: 'Sophomore Year · 2024', date: '2024', title: 'Kaiser Permanente — Internship', desc: 'Summer internship at Kaiser Permanente.', noImage: true },
+    { group: 'Sophomore Year · 2024', date: '2024', title: 'Kaiser Permanente — Internship', desc: 'Summer internship at Kaiser Permanente.', img: T + 'kaiser-permanente-logo.png', logo: true },
     { group: 'Sophomore Year · 2024', date: '2024', title: 'Joined EOP SSS STEM Scholars', desc: 'Joined the EOP SSS STEM Scholars program.', img: T + 'sss-stem-scholar.jpg' },
 
     // ---- Freshman Year 2023 ----
     { group: 'Freshman Year · 2023', date: '2023', title: 'CS61B: Data Structures', desc: 'Data structures and algorithms.', noImage: true },
-    { group: 'Freshman Year · 2023', date: '2023', title: 'Codify — HotSpot UI/UX Lead', desc: 'UI/UX lead for HotSpot.', noImage: true },
+    { group: 'Freshman Year · 2023', date: '2023', title: 'Codify — HotSpot UI/UX Lead', desc: 'UI/UX lead for HotSpot.', img: T + 'codify-berkeley-logo.png', logoDark: true },
     { group: 'Freshman Year · 2023', date: '2023', title: 'CS61A: Structure and Interpretation of Computer Programs', desc: 'Introduction to computer science.', noImage: true },
 
     // ---- Before UC Berkeley ----
@@ -150,6 +153,7 @@
       f.innerHTML = '<img src="' + e.images[0] + '" alt="' + esc(e.title) + '" loading="lazy">';
     } else if (e.img) {
       if (e.logo) f.classList.add('frame-logo');
+      else if (e.logoDark) f.classList.add('frame-logo-dark');
       f.innerHTML = '<img src="' + e.img + '" alt="' + esc(e.title) + '" loading="lazy">';
     } else if (e.noImage) {
       f.classList.add('frame-blank');
