@@ -41,8 +41,6 @@
   // Order matters — this is Allena's timeline, newest first.
   var ENTRIES = [
     // ---- Senior Year 2026 ----
-    { group: 'Senior Year · 2026', date: '2026', title: 'Learn Basic Tech — Course Instructor', desc: 'Teaching a course on Retrieval-Augmented Generation.',
-      links: [{ label: 'View course', url: 'https://www.learnbasictech.org/courses/retrieval-augmented-generation' }] },
     { group: 'Senior Year · 2026', date: '2026', title: 'CS180: Intro to Computer Vision & Computational Photography', desc: 'Computer vision and computational photography coursework.', img: T + 'cs180.png' },
     { group: 'Senior Year · 2026', date: '2026', title: 'CS160: User Interface Design and Development', desc: 'User interface design and development coursework.', img: T + 'cs160.png' },
     { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Fellowship — Counselor', desc: 'Counselor for the Girls Make Games fellowship.', img: T + 'gmg-counselor.png' },
@@ -61,7 +59,9 @@
     { group: 'Junior Year · 2025', date: '2025', title: 'Grace Hopper Celebration — Fall 2025', desc: 'Attended through the UC Berkeley EECS scholarship.', img: T + 'ghc25.jpg' },
     { group: 'Junior Year · 2025', date: '2025', title: 'GamesCrafters — Game Developer', desc: 'Game developer. Strongly solved Orbito and brought it online.', img: T + 'gc-orbito.png' },
     { group: 'Junior Year · 2025', date: '2025', title: 'Cal Marginalized Genders in Gaming — Website Designer', desc: 'Website designer for CMGG.', img: T + 'cmgg-webdev.png' },
-    { group: 'Junior Year · 2025', date: '2025', title: 'CalSTEM Work', desc: 'Joined a team advocating for accessible STEM education.', img: T + 'calstem-pulse.png' },
+    { group: 'Junior Year · 2025', date: '2025', title: 'CalSTEM Work', desc: 'Joined a team advocating for accessible STEM education.', img: T + 'calstem-pulse.png',
+      note: 'Also taught a Learn Basic Tech course on Retrieval-Augmented Generation.',
+      links: [{ label: 'View course', url: 'https://www.learnbasictech.org/courses/retrieval-augmented-generation' }] },
     { group: 'Junior Year · 2025', date: '2025', title: 'GMG College Scholarship Recipient', desc: '2023 scholarship recipient supporting continued work in game development.',
       images: [T + 'gmg-scholar/shot1.png', T + 'gmg-scholar/shot2.png', T + 'gmg-scholar/shot3.png'],
       links: [{ label: 'View announcement', url: 'https://www.gmgsf.org/2023-college-scholarship-winners' }] },
