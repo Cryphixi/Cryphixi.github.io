@@ -825,10 +825,8 @@ nav.site-nav a.active { color: var(--aster); }
 
 .resume-wrap { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; padding: 0 1.5rem 7rem; }
 .doc-frame { background: var(--card); padding: 2rem; margin-bottom: 2rem; }
-.doc-page { aspect-ratio: 8.5 / 11; background: var(--ink); padding: 2.4rem 2.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
-.doc-page .bar { height: 8px; background: rgba(13, 11, 31, 0.12); }
-.doc-page .bar.title { height: 14px; width: 60%; background: rgba(13, 11, 31, 0.28); margin-bottom: 0.6rem; }
-.doc-page .bar.short { width: 45%; }
+.doc-page { aspect-ratio: 8.5 / 11; background: var(--ink); overflow: hidden; }
+.doc-page iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* ============================================================
    RESPONSIVE
