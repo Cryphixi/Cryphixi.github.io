@@ -62,9 +62,6 @@
     { group: 'Junior Year · 2025', date: '2025', title: 'CalSTEM Work', desc: 'Joined a team advocating for accessible STEM education.', img: T + 'calstem-pulse.png',
       note: 'Also taught a Learn Basic Tech course on Retrieval-Augmented Generation.',
       links: [{ label: 'View course', url: 'https://www.learnbasictech.org/courses/retrieval-augmented-generation' }] },
-    { group: 'Junior Year · 2025', date: '2025', title: 'GMG College Scholarship Recipient', desc: '2023 scholarship recipient supporting continued work in game development.',
-      images: [T + 'gmg-scholar/shot1.png', T + 'gmg-scholar/shot2.png', T + 'gmg-scholar/shot3.png'],
-      links: [{ label: 'View announcement', url: 'https://www.gmgsf.org/2023-college-scholarship-winners' }] },
     { group: 'Junior Year · 2025', date: '2025', title: 'CS61C: Computer Architecture', desc: 'Machine structures and computer architecture.', noImage: true },
 
     // ---- Sophomore Year 2024 ----
@@ -81,7 +78,9 @@
 
     // ---- Before UC Berkeley ----
     { group: 'High School Senior', date: '2022 — 2023', title: 'Accenture — Internship', desc: 'High school internship at Accenture.' },
-    { group: 'High School Senior', date: '2022 — 2023', title: 'Girls Make Games Scholarship Recipient', desc: 'Awarded the Girls Make Games scholarship.', img: O + 'girls-make-games.png', logo: true },
+    { group: 'High School Senior', date: '2022 — 2023', title: 'Girls Make Games Scholarship Recipient', desc: '2023 scholarship recipient supporting continued work in game development.',
+      images: [T + 'gmg-scholar/shot1.png', T + 'gmg-scholar/shot2.png', T + 'gmg-scholar/shot3.png'],
+      links: [{ label: 'View announcement', url: 'https://www.gmgsf.org/2023-college-scholarship-winners' }] },
     { group: 'High School Senior', date: '2022 — 2023', title: 'African American Initiative Scholarship Recipient', desc: 'Cal Alumni Association African American Initiative scholarship.', img: O + 'cal-alumni-african-american.png', logo: true },
     { group: 'High School Senior', date: '2022 — 2023', title: 'America On Tech', desc: 'Joined America On Tech.',
       images: [T + 'aot-joined/photo.jpeg', T + 'aot-joined/nightview-screenshot.png'],
