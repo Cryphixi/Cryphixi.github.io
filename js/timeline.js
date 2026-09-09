@@ -49,8 +49,8 @@
     // ---- Senior Year 2026 ----
     { group: 'Senior Year · 2026', date: '2026', title: 'CS180: Intro to Computer Vision & Computational Photography', desc: 'Computer vision and computational photography coursework.', img: T + 'cs180.png', fit: true },
     { group: 'Senior Year · 2026', date: '2026', title: 'CS160: User Interface Design and Development', desc: 'User interface design and development coursework.', img: T + 'cs160.png', fit: true },
-    { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Fellowship — Counselor', desc: 'Counselor for the Girls Make Games fellowship.', img: T + 'gmg-counselor.png', fit: true },
-    { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Mentorship', desc: 'Mentorship program. Projects: Canopy and Menses.', img: T + 'gmg-mentorship-logo.png', logo: true },
+    { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Fellowship — Counselor', desc: 'Counselor for the Girls Make Games fellowship Summer 2026.', img: T + 'gmg-counselor.png', fit: true },
+    { group: 'Senior Year · 2026', date: '2026', title: 'Girls Make Games Mentorship', desc: 'Mentorship program provided through GMG Scholarship. Projects: Canopy and Menses.', img: T + 'gmg-mentorship-logo.png', logo: true },
 
     // ---- Junior Year 2025 ----
     { group: 'Junior Year · 2025', date: '2025', title: 'GamesCrafters — Frontend Web Developer', desc: 'Frontend web developer. Led the GamesmanUni UI overhaul.', img: T + 'gc-frontend-dan.jpg',
@@ -61,7 +61,7 @@
       note: 'Had the privilege to meet the amazing Darren Korb!' },
     { group: 'Junior Year · 2025', date: '2025', title: 'AI4ALL Machine Learning Fellowship', desc: 'Machine learning fellowship. Project: LevelForger.', img: O + 'ai4all.png', logo: true },
     { group: 'Junior Year · 2025', date: '2025', title: 'America On Tech — Data Science Fellowship', desc: 'Year-long data science fellowship.', img: O + 'america-on-tech.png', logo: true },
-    { group: 'Junior Year · 2025', date: '2025', title: 'Inheritance Lines', desc: 'Narrative-driven game exploring what gets passed down.', img: T + 'inheritance-lines-cover.png', fit: true },
+    { group: 'Junior Year · 2025', date: '2025', title: 'Inheritance Lines', desc: 'Narrative-driven game exploring what gets passed down versus what is taken.', img: T + 'inheritance-lines-cover.png', fit: true },
     { group: 'Junior Year · 2025', date: '2025', title: 'Grace Hopper Celebration — Fall 2025', desc: 'Attended through the UC Berkeley EECS scholarship.', img: T + 'ghc25.jpg' },
     { group: 'Junior Year · 2025', date: '2025', title: 'GamesCrafters — Game Developer', desc: 'Game developer. Strongly solved Orbito and brought it online.', img: T + 'gc-orbito.png' },
     { group: 'Junior Year · 2025', date: '2025', title: 'Cal Marginalized Genders in Gaming — Website Designer', desc: 'Website designer for CMGG.', img: T + 'cmgg-webdev.png', fit: true },
