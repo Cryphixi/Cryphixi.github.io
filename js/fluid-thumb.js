@@ -1,18 +1,19 @@
 /* ============================================================
-   Project thumbnail fluid backgrounds — same curl-noise WebGL
-   shader family as the hero, one independent instance per
-   thumbnail that has no real screenshot yet. Each instance gets
-   its own spatial offset, time phase and speed so the swirls
-   never move in lockstep, plus a verdigris accent blended in
-   since this is foreground content, not a background wash.
-   Falls back to the plain card background if WebGL is
+   Fluid swirl thumbnails — same curl-noise WebGL shader family as
+   the hero, one independent instance per canvas that has no real
+   screenshot yet (project cards, timeline milestones). Each
+   instance gets its own spatial offset, time phase and speed so
+   the swirls never move in lockstep, plus a verdigris accent
+   blended in since this is foreground content, not a background
+   wash. Falls back to the plain card background if WebGL is
    unavailable; a static frame if prefers-reduced-motion is set.
+
+   Auto-attaches to `.thumb-fluid canvas` on load. Other scripts
+   creating canvases later (e.g. the timeline) can call
+   window.FluidSwirl.attach(canvas, seed) directly.
    ============================================================ */
 (function () {
   'use strict';
-
-  var canvases = document.querySelectorAll('.thumb-fluid canvas');
-  if (!canvases.length) return;
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -189,6 +190,8 @@
 
     var start = performance.now();
     var raf = null;
+    var visible = true;  // in viewport (IntersectionObserver)
+    var enabled = true;  // not manually paused (e.g. an inactive timeline frame)
 
     function draw(t) {
       gl.uniform1f(uTime, startPhase + t);
@@ -198,6 +201,13 @@
     function frame(now) {
       draw((now - start) / 1000);
       raf = requestAnimationFrame(frame);
+    }
+
+    function sync() {
+      if (reduce) return;
+      var shouldRun = visible && enabled;
+      if (shouldRun && !raf) { raf = requestAnimationFrame(frame); }
+      else if (!shouldRun && raf) { cancelAnimationFrame(raf); raf = null; }
     }
 
     if (reduce) {
@@ -212,11 +222,19 @@
     if (!reduce && window.IntersectionObserver) {
       new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting && !raf) { raf = requestAnimationFrame(frame); }
-          else if (!entry.isIntersecting && raf) { cancelAnimationFrame(raf); raf = null; }
+          visible = entry.isIntersecting;
+          sync();
         });
       }, { rootMargin: '200px' }).observe(canvas);
     }
+
+    // Manual pause/resume for callers that know better than viewport
+    // geometry — e.g. the timeline keeps every frame in the DOM at once
+    // and just toggles opacity, so only the active one should animate.
+    return {
+      pause: function () { enabled = false; sync(); },
+      resume: function () { enabled = true; sync(); }
+    };
   }
 
   // small, seedable PRNG (mulberry32) — deterministic per index so a
@@ -231,5 +249,10 @@
     };
   }
 
-  canvases.forEach(makeInstance);
+  // Public API — attach a fluid swirl to any canvas, including ones
+  // created later by other scripts (e.g. the timeline's own frames).
+  // `seed` just needs to differ between instances; any integer works.
+  window.FluidSwirl = { attach: makeInstance };
+
+  document.querySelectorAll('.thumb-fluid canvas').forEach(makeInstance);
 })();

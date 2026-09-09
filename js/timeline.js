@@ -17,6 +17,9 @@
      video    - optional { id: '<YouTube video id>' } — shows the video's
                 thumbnail with a play control; click swaps in the real embed.
      noImage  - optional; true renders a deliberately blank photo slot (no placeholder text)
+     fluidThumb - optional; true renders the same live WebGL fluid swirl
+                used for imageless project thumbnails — use for milestones
+                with no photo to show (e.g. a class with no coursework shot)
      logo     - optional; true renders `img` on a light card, scaled to fit in
                 full (object-fit: contain) instead of the photo-fill cover
                 treatment — use for organization/company marks
@@ -68,19 +71,19 @@
     { group: 'Junior Year · 2025', date: '2025', title: 'CalSTEM Work', desc: 'Joined a team advocating for accessible STEM education.', img: T + 'calstem-pulse.png', fit: true,
       note: 'Also taught a Learn Basic Tech course on Retrieval-Augmented Generation.',
       links: [{ label: 'View course', url: 'https://www.learnbasictech.org/courses/retrieval-augmented-generation' }] },
-    { group: 'Junior Year · 2025', date: '2025', title: 'CS61C: Computer Architecture', desc: 'Machine structures and computer architecture.', noImage: true },
+    { group: 'Junior Year · 2025', date: '2025', title: 'CS61C: Computer Architecture', desc: 'Machine structures and computer architecture.', fluidThumb: true },
 
     // ---- Sophomore Year 2024 ----
     { group: 'Sophomore Year · 2024', date: '2024', title: 'EOP SSS STEM Scholar', desc: 'Scholarship recipient.', img: T + 'sss-stem-scholar.jpg' },
-    { group: 'Sophomore Year · 2024', date: '2024', title: 'CS70: Discrete Mathematics', desc: 'Discrete mathematics and probability theory.', noImage: true },
+    { group: 'Sophomore Year · 2024', date: '2024', title: 'CS70: Discrete Mathematics', desc: 'Discrete mathematics and probability theory.', fluidThumb: true },
     { group: 'Sophomore Year · 2024', date: '2024', title: 'Game Developers Conference 2025', desc: 'Attended through the Girls Make Games scholarship.', img: T + 'gdc25.jpg' },
     { group: 'Sophomore Year · 2024', date: '2024', title: 'Kaiser Permanente — Internship', desc: 'Summer internship at Kaiser Permanente.', img: T + 'kaiser-permanente-logo.png', logo: true },
     { group: 'Sophomore Year · 2024', date: '2024', title: 'Joined EOP SSS STEM Scholars', desc: 'Joined the EOP SSS STEM Scholars program.', img: T + 'sss-stem-scholar.jpg' },
 
     // ---- Freshman Year 2023 ----
-    { group: 'Freshman Year · 2023', date: '2023', title: 'CS61B: Data Structures', desc: 'Data structures and algorithms.', noImage: true },
+    { group: 'Freshman Year · 2023', date: '2023', title: 'CS61B: Data Structures', desc: 'Data structures and algorithms.', fluidThumb: true },
     { group: 'Freshman Year · 2023', date: '2023', title: 'Codify — HotSpot UI/UX Lead', desc: 'UI/UX lead for HotSpot.', img: T + 'codify-berkeley-logo.png', logoDark: true },
-    { group: 'Freshman Year · 2023', date: '2023', title: 'CS61A: Structure and Interpretation of Computer Programs', desc: 'Introduction to computer science.', noImage: true },
+    { group: 'Freshman Year · 2023', date: '2023', title: 'CS61A: Structure and Interpretation of Computer Programs', desc: 'Introduction to computer science.', fluidThumb: true },
 
     // ---- Before UC Berkeley ----
     { group: 'High School Senior', date: '2022 — 2023', title: 'Accenture — Internship', desc: 'High school internship at Accenture.', img: T + 'accenture-logo.png', logo: true },
@@ -115,6 +118,7 @@
   // ---------- build list (steps + year separators) ----------
   var stepEls = [], frameEls = [];
   var slideState = {}; // index -> { slides: [el,...], cur: 0, timer: null }
+  var fluidHandles = {}; // index -> { pause, resume } from window.FluidSwirl.attach
   var lastGroup = null;
 
   ENTRIES.forEach(function (e, i) {
@@ -162,6 +166,15 @@
       else if (e.logoDark) f.classList.add('frame-logo-dark');
       else if (e.fit) f.classList.add('frame-fit');
       f.innerHTML = '<img src="' + e.img + '" alt="' + esc(e.title) + '" loading="lazy">';
+    } else if (e.fluidThumb) {
+      f.classList.add('frame-fluid');
+      var fluidCanvas = document.createElement('canvas');
+      fluidCanvas.setAttribute('aria-hidden', 'true');
+      f.appendChild(fluidCanvas);
+      if (window.FluidSwirl) {
+        var handle = window.FluidSwirl.attach(fluidCanvas, i);
+        if (handle) { fluidHandles[i] = handle; handle.pause(); } // only the active frame animates
+      }
     } else if (e.noImage) {
       f.classList.add('frame-blank');
     } else {
@@ -239,7 +252,10 @@
   var active = -1;
   function setActive(i) {
     if (i === active) return;
-    if (active !== -1) stopSlideshow(active);
+    if (active !== -1) {
+      stopSlideshow(active);
+      if (fluidHandles[active]) fluidHandles[active].pause();
+    }
     active = i;
     stepEls.forEach(function (el, k) { el.classList.toggle('active', k === i); });
     frameEls.forEach(function (el, k) {
@@ -248,6 +264,7 @@
       el.style.zIndex = k === i ? 2 : 1;
     });
     startSlideshow(i);
+    if (fluidHandles[i]) fluidHandles[i].resume();
     var e = ENTRIES[i];
     if (capTitle) capTitle.textContent = e.title;
     if (capNote) capNote.textContent = e.desc;

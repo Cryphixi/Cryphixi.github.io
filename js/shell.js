@@ -177,4 +177,53 @@
   armIdle();
   window.addEventListener('load', function () { measure(); onScroll(); });
   setTimeout(function () { measure(); onScroll(); }, 400);
+
+  /* ---------- copy-to-clipboard email links ---------- */
+  var EMAIL = 'ogfay05@gmail.com';
+  var emailLinks = document.querySelectorAll('a[href="mailto:' + EMAIL + '"]');
+  if (emailLinks.length) {
+    var toast = null;
+    var toastTimer = null;
+
+    function showEmailToast() {
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'email-toast';
+        toast.setAttribute('role', 'status');
+        toast.innerHTML = '<span class="email-toast-icon" aria-hidden="true">&#10022;</span> Email has been copied!';
+        document.body.appendChild(toast);
+      }
+      toast.classList.remove('show');
+      void toast.offsetWidth; // restart the transition if it's already showing
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+    }
+
+    function fallbackCopy() {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = EMAIL;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      } catch (e) { /* best effort — still show the toast below */ }
+      showEmailToast();
+    }
+
+    emailLinks.forEach(function (a) {
+      a.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(EMAIL).then(showEmailToast, fallbackCopy);
+        } else {
+          fallbackCopy();
+        }
+      });
+    });
+  }
 })();
