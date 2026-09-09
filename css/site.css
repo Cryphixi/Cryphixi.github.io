@@ -259,8 +259,8 @@ nav.site-nav a.active { color: var(--aster); }
 }
 .profile-photo {
   position: relative;
-  width: 280px; height: 280px;
-  max-width: 70vw; max-height: 70vw;
+  width: 336px; height: 336px;
+  max-width: 80vw; max-height: 80vw;
   border-radius: 0;
   background: var(--photo);
   display: flex; align-items: center; justify-content: center;
@@ -615,6 +615,8 @@ nav.site-nav a.active { color: var(--aster); }
   font-family: var(--f-accent); font-style: italic; font-size: 0.85rem; color: var(--ash);
 }
 .proj-card .thumb img { width: 100%; height: 100%; object-fit: contain; }
+.proj-card .thumb.thumb-fluid { padding: 0; }
+.proj-card .thumb-fluid canvas { width: 100%; height: 100%; display: block; }
 .proj-card .badge {
   align-self: flex-start;
   font-family: var(--f-accent); font-style: italic;
