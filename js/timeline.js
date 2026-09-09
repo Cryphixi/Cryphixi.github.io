@@ -23,11 +23,12 @@
      logoDark - optional; like `logo`, but keeps the plate's own dark
                 background instead of a light card — use for marks drawn
                 as white/transparent line art for a dark ground
-     fit      - optional; true scales `img` to fit in full (object-fit:
-                contain) on the plate's own dark ground, no card — use for
-                screenshots/documents/renders whose whole composition
-                matters (as opposed to a candid photo, which should fill
-                the frame edge-to-edge via the default cover treatment)
+     fit      - optional; true scales `img` (or every slide in `images`) to
+                fit in full (object-fit: contain) on the plate's own dark
+                ground, no card — use for screenshots/documents/renders, or
+                a non-square candid photo, whose whole composition matters
+                (as opposed to a photo meant to fill the frame edge-to-edge
+                via the default cover treatment)
      note     - optional extra italic line shown under the description in the polaroid
      links    - optional array of {label, url} shown as "label ->" under the caption
    ============================================================ */
@@ -88,7 +89,7 @@
       links: [{ label: 'View announcement', url: 'https://www.gmgsf.org/2023-college-scholarship-winners' }] },
     { group: 'High School Senior', date: '2022 — 2023', title: 'African American Initiative Scholarship Recipient', desc: 'Cal Alumni Association African American Initiative scholarship.', img: O + 'cal-alumni-african-american.png', logo: true },
     { group: 'High School Senior', date: '2022 — 2023', title: 'America On Tech', desc: 'Joined America On Tech.',
-      images: [T + 'aot-joined/photo.jpeg', T + 'aot-joined/nightview-screenshot.png'],
+      images: [T + 'aot-joined/photo.jpeg', T + 'aot-joined/nightview-screenshot.png'], fit: true,
       links: [{ label: 'View Night View', url: 'https://cryphixi.github.io/NIght-View/' }] },
     { group: 'High School Senior', date: '2022 — 2023', title: 'Founded Alexander Hamilton Senior High E-Sports Team', desc: "Founded and led the school's first Esports team.",
       video: { id: 'dAiiObRnN5M' } }
@@ -143,6 +144,7 @@
     if (e.video) {
       buildVideoFrame(f, e);
     } else if (e.images && e.images.length > 1) {
+      if (e.fit) f.classList.add('frame-fit');
       var slides = e.images.map(function (src, k) {
         var img = document.createElement('img');
         img.className = 'slide' + (k === 0 ? ' show' : '');

@@ -259,8 +259,8 @@ nav.site-nav a.active { color: var(--aster); }
 }
 .profile-photo {
   position: relative;
-  width: 280px; height: 280px;
-  max-width: 70vw; max-height: 70vw;
+  width: 336px; height: 336px;
+  max-width: 80vw; max-height: 80vw;
   border-radius: 0;
   background: var(--photo);
   display: flex; align-items: center; justify-content: center;
@@ -454,7 +454,7 @@ nav.site-nav a.active { color: var(--aster); }
 
 /* video frame — YouTube thumbnail + play control, swaps to a live embed */
 .frame.frame-video { background: var(--well); }
-.frame.frame-video img { width: 100%; height: 100%; object-fit: cover; }
+.frame.frame-video img { width: 100%; height: 100%; object-fit: contain; }
 .frame.frame-video iframe { width: 100%; height: 100%; border: 0; }
 .video-play {
   position: absolute; top: 50%; left: 50%;
@@ -615,6 +615,8 @@ nav.site-nav a.active { color: var(--aster); }
   font-family: var(--f-accent); font-style: italic; font-size: 0.85rem; color: var(--ash);
 }
 .proj-card .thumb img { width: 100%; height: 100%; object-fit: contain; }
+.proj-card .thumb.thumb-fluid { padding: 0; }
+.proj-card .thumb-fluid canvas { width: 100%; height: 100%; display: block; }
 .proj-card .badge {
   align-self: flex-start;
   font-family: var(--f-accent); font-style: italic;
@@ -825,10 +827,8 @@ nav.site-nav a.active { color: var(--aster); }
 
 .resume-wrap { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; padding: 0 1.5rem 7rem; }
 .doc-frame { background: var(--card); padding: 2rem; margin-bottom: 2rem; }
-.doc-page { aspect-ratio: 8.5 / 11; background: var(--ink); padding: 2.4rem 2.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
-.doc-page .bar { height: 8px; background: rgba(13, 11, 31, 0.12); }
-.doc-page .bar.title { height: 14px; width: 60%; background: rgba(13, 11, 31, 0.28); margin-bottom: 0.6rem; }
-.doc-page .bar.short { width: 45%; }
+.doc-page { aspect-ratio: 8.5 / 11; background: var(--ink); overflow: hidden; }
+.doc-page iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* ============================================================
    RESPONSIVE
