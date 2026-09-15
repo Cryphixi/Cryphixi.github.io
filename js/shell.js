@@ -226,4 +226,18 @@
       });
     });
   }
+
+  /* ---------- project card slideshows (slow crossfade, always running) ---------- */
+  var PROJ_SLIDE_DWELL = 6000;
+  document.querySelectorAll('.thumb-slideshow').forEach(function (thumb) {
+    var slides = thumb.querySelectorAll('img.slide');
+    if (slides.length < 2) return;
+    if (reduce) return;
+    var i = 0;
+    setInterval(function () {
+      slides[i].classList.remove('show');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('show');
+    }, PROJ_SLIDE_DWELL);
+  });
 })();
