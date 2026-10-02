@@ -209,21 +209,17 @@ nav.site-nav a.active { color: var(--aster); }
   z-index: 2;
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3.5rem;
-  text-align: left;
-  padding: 7rem 3rem;
+  text-align: center;
+  padding: 9rem 1.5rem 3rem;
 }
-.hero-photo { flex-shrink: 0; }
-.hero-copy { max-width: 520px; }
 .hero .logo-mark {
   width: 130px;
   margin-bottom: 1.4rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .hero .logo-mark img { width: 100%; height: auto; display: block; }
 .hero-name {
@@ -232,15 +228,6 @@ nav.site-nav a.active { color: var(--aster); }
   line-height: 1.1;
   color: var(--ink);
   text-shadow: 0 0 30px rgba(167, 139, 250, 0.30);
-}
-.hero-tagline {
-  margin-top: 0.9rem;
-  font-family: var(--f-accent);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--ash);
-  letter-spacing: 0.03em;
-  max-width: 520px;
 }
 .scroll-cue {
   position: absolute;
@@ -253,7 +240,35 @@ nav.site-nav a.active { color: var(--aster); }
   color: var(--ash);
 }
 
-/* Profile photo — hero visual zone extends behind it */
+/* Profile — photo and name/bio side by side, below the hero */
+.profile {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  text-align: left;
+  padding: 2rem 3rem 6rem;
+}
+.profile-copy { max-width: 520px; }
+.profile-name {
+  font-family: var(--f-script);
+  font-size: 2.6rem;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.22);
+}
+.profile-tagline {
+  font-family: var(--f-accent);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ash);
+  letter-spacing: 0.03em;
+}
 .profile-photo {
   position: relative;
   width: 336px; height: 336px;
@@ -879,9 +894,8 @@ nav.site-nav a.active { color: var(--aster); }
   .nav-brand img { height: 32px; }
   .nav-links { justify-content: flex-start; gap: 1.4rem; }
   .hero-name { font-size: 3rem; }
-  .hero { flex-direction: column; text-align: center; gap: 2rem; padding: 6.5rem 1.5rem 2.5rem; }
-  .hero .logo-mark { justify-content: center; }
-  .hero-copy { text-align: center; }
+  .profile { flex-direction: column; text-align: center; gap: 1.5rem; padding: 1.5rem 1.5rem 3rem; }
+  .profile-copy { text-align: center; }
   .page-head { padding: 6.5rem 1.5rem 1.5rem; }
   .journey { padding: 1rem 1.5rem 3rem; }
   .journey-grid { grid-template-columns: 1fr; gap: 0; }
