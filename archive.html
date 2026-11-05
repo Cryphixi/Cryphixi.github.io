@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Allena Oglivie — Portfolio</title>
+  <link rel="icon" type="image/png" href="public/logo.png">
+  <link rel="apple-touch-icon" href="public/logo.png">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <!-- Background system: zone 1 (hero fluid + stars), zone 2 (side margins) -->
+  <canvas id="fluid-canvas" aria-hidden="true"></canvas>
+  <div class="hero-stars" aria-hidden="true"></div>
+  <div class="side-stars left" aria-hidden="true"></div>
+  <div class="side-stars right" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Primary">
+    <a href="index.html" class="nav-brand" aria-label="Allena Oglivie — Home"><img src="public/nameLogo.png" alt="Allena Oglivie"></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="#projects">Projects</a>
+      <a href="organizations.html">Organizations</a>
+      <a href="socials.html">Socials</a>
+    </div>
+  </nav>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+
+  <main>
+    <!-- Hero zone (hero + profile share the fluid/star field) -->
+    <div class="hero-zone">
+      <section class="hero">
+        <div class="logo-mark"><img src="public/logo.png" alt="Allena Oglivie logo" /></div>
+        <h1 class="hero-name">Allena Oglivie</h1>
+        <p class="hero-tagline">Studying Computer Science I am a senior at University of California, Berkeley. I build toward game engineering, procedural generation via Machine Learning, AI, and creative tooling</p>
+      </section>
+      <section class="profile">
+        <div class="profile-photo">
+          <span class="crop tl-h"></span><span class="crop tl-v"></span>
+          <span class="crop tr-h"></span><span class="crop tr-v"></span>
+          <span class="crop bl-h"></span><span class="crop bl-v"></span>
+          <span class="crop br-h"></span><span class="crop br-v"></span>
+          <img src="public/profile-portrait.jpg" alt="Allena Oglivie"
+               onload="this.parentElement.classList.add('has-photo')"
+               onerror="this.remove()">
+          <span class="ph-fallback">profile photo</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- Journey intro -->
+    <section class="journey-intro">
+      <h2>My Journey</h2>
+      <p class="passion">I start from what a game should make you feel and the visuals, then build the systems that get it there. Scroll through, from where I am now back to where I started.</p>
+    </section>
+
+    <!-- Journey timeline: scrolling list + sticky polaroid -->
+    <section class="journey" id="tl-section">
+      <div class="journey-grid">
+        <div class="tl-list" id="tl-track">
+          <div class="living-line" aria-hidden="true"></div>
+          <!-- steps + year separators injected by timeline.js -->
+        </div>
+        <div class="tl-aside">
+          <div class="polaroid">
+            <div class="ledger-head">
+              <span class="diamond" aria-hidden="true"></span>
+              <span class="index" id="tl-index">01 / 01</span>
+              <span class="rule" aria-hidden="true"></span>
+              <span class="cap-date" id="tl-capdate"></span>
+            </div>
+            <div class="image-well" id="tl-well">
+              <span class="crop tl-h"></span><span class="crop tl-v"></span>
+              <span class="crop tr-h"></span><span class="crop tr-v"></span>
+              <span class="crop bl-h"></span><span class="crop bl-v"></span>
+              <span class="crop br-h"></span><span class="crop br-v"></span>
+              <!-- frames injected by timeline.js -->
+            </div>
+            <div class="caption" id="tl-caption">
+              <div class="c-title"></div>
+              <div class="c-note"></div>
+              <div class="c-photo-note" hidden></div>
+              <div class="c-links" hidden></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="scroll-rail" id="tl-rail" aria-hidden="true"><div class="fill"></div></div>
+    <div class="hud" id="tl-hud" aria-hidden="true"></div>
+
+    <!-- End of timeline -> Projects handoff -->
+    <section class="end-timeline">
+      <span class="kicker">End of timeline</span>
+      <p class="bridge">What I've been building since is all in one direction: game engineering, game AI, software engineering and the creative tooling around them! </p>
+      <div class="ornament" aria-hidden="true">
+        <span class="r-l"></span><span class="d"></span><span class="r-r"></span>
+      </div>
+      <p class="closing">Thank you for taking the time to look through my journey.</p>
+    </section>
+
+    <!-- Projects preview -->
+    <section class="projects" id="projects" style="scroll-margin-top: 90px;">
+      <h2>Projects</h2>
+
+      <div class="proj-group">
+        <div class="sub-label">UC Berkeley Upper Division Class Projects</div>
+        <div class="proj-grid">
+          <article class="proj-card">
+            <div class="thumb"><img src="public/timeline/snowfall-thumb.png" alt="Snowfall — snow dragon render" loading="lazy"></div>
+            <h3>CS184: Computer Graphics</h3>
+            <p class="p-desc">Rasterizer, MeshEdit, PathTracer and Cloth Simulation, plus the "Snowfall" final project.</p>
+            <div class="p-links">
+              <a href="https://cal-cs184-student.github.io/hw-webpages-Cryphixi/" target="_blank" rel="noopener">View coursework (all four HW) &#8594;</a>
+              <a href="https://c-herbert.github.io/cs184-final-project-webpage/" target="_blank" rel="noopener">View Snowfall final project &#8594;</a>
+            </div>
+          </article>
+          <article class="proj-card">
+            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
+            <h3>CS180: Computer Vision</h3>
+            <p class="p-desc">Project webpages from Berkeley's computational photography and vision coursework.</p>
+            <a class="p-link" href="#">View project pages &#8594;</a>
+          </article>
+          <article class="proj-card">
+            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
+            <h3>CS160: User Interface Design</h3>
+            <p class="p-desc">Interface design coursework, from research through built prototype.</p>
+            <a class="p-link" href="#">View project &#8594;</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="proj-group">
+        <div class="sub-label">Game development</div>
+        <div class="proj-grid">
+          <article class="proj-card">
+            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
+            <h3>Menses Mortis</h3>
+            <p class="p-desc">Want to know what is like to fight against adaptive NPCs?</p>
+            <a class="p-link" href="#">View project &#8594;</a>
+            <a class="p-link" href="https://docs.google.com/document/d/1OoOVOumWwJHKuHzXbsAstZZdh1TOY2M6wKxtw_hIfpM/edit?usp=sharing">View game design doc &#8594;</a>
+          </article>
+          <article class="proj-card">
+            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
+            <h3>Inheritance Lines</h3>
+            <p class="p-desc">Narrative-driven game exploring the illusion of choice in a histoical setting.</p>
+            <a class="p-link" href="#">View project &#8594;</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="proj-group">
+        <div class="sub-label">AI / ML</div>
+        <div class="proj-grid">
+          <article class="proj-card">
+            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
+            <h3>Canopy</h3>
+            <p class="p-desc">Taking game designer’s brainstorms into an engineer-ready NPC behavior spec! Try it by clicking the link below. </p>
+            <a class="p-link" href="https://canopy-beta-eight.vercel.app/" target="_blank" rel="noopener">View project &#8594;</a>
+          </article>
+          <article class="proj-card">
+            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
+            <h3>LevelForger</h3>
+            <p class="p-desc">VAE-based procedural level generator — the contribution is the ML architecture.</p>
+            <a class="p-link" href="#">View project &#8594;</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="proj-group">
+        <div class="sub-label">Community tools</div>
+        <div class="proj-grid">
+          <article class="proj-card">
+            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
+            <span class="badge">community favorite</span>
+            <h3>BALL x PIT Evolution Tracker</h3>
+            <p class="p-desc">A fan-made evolution and passive tracker with a team-builder matchmaker. Built out of personal need, I REALLY love this game. Now used daily by the game's Reddit and Discord community!</p>
+            <a class="p-link" href="https://cryphixi.github.io/ballxpit-tracker" target="_blank" rel="noopener">View tracker &#8594;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (shared component) -->
+    <footer class="site-footer">
+      <div class="footer-stars" aria-hidden="true"></div>
+      <div class="footer-inner">
+        <div class="footer-mark"><img src="public/nameLogo.png" alt="Allena Oglivie" /></div>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/allena-oglivie/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/Cryphixi" target="_blank" rel="noopener">GitHub</a>
+          <a href="#">Handshake</a>
+          <a href="mailto:ogfay05@gmail.com">Email</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/fluid.js"></script>
+  <script src="js/fluid-thumb.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>
