@@ -24,6 +24,14 @@
 
 
 
+<!-- cs180-backnav -->
+<style>#cs180-backnav{position:fixed;left:16px;bottom:16px;z-index:2147483647;display:flex;gap:6px;font:600 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif}
+#cs180-backnav a{color:#fff;background:rgba(20,20,28,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);padding:8px 12px;border-radius:999px;text-decoration:none}
+#cs180-backnav a:hover{background:rgba(20,20,28,.95);border-color:rgba(255,255,255,.4)}
+@media print{#cs180-backnav{display:none}}</style>
+<script>(function(){function add(){if(document.getElementById('cs180-backnav'))return;var n=document.createElement('nav');n.id='cs180-backnav';n.setAttribute('aria-label','Portfolio navigation');n.innerHTML='<a href="https://cryphixi.github.io/cs180.html">&larr; CS180 Projects</a><a href="https://cryphixi.github.io/index.html">Portfolio Home</a>';document.body.appendChild(n);}
+if(document.readyState!=='loading')add();else document.addEventListener('DOMContentLoaded',add);window.addEventListener('load',function(){add();setTimeout(add,1500);});})();</script>
+<!-- /cs180-backnav -->
 </head>
 <body>
 
