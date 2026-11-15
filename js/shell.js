@@ -163,27 +163,65 @@
       [[2, .5], [3, .3], [4, .15]].forEach(function (pg) { var o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.value = F0 * pg[0]; vibG.connect(o.frequency); var gg = ctx.createGain(); gg.gain.value = pg[1]; o.connect(gg); gg.connect(hlp); o.start(); });
       return true;
     }
+    // every change of volume is a fade: in when the music starts or the page arrives, out when it leaves
+    function fade(to, tc, fromZero) {
+      var t = ctx.currentTime, g = master.gain;
+      g.cancelScheduledValues(t); g.setValueAtTime(fromZero ? 0 : g.value, t); g.setTargetAtTime(to, t, tc);
+    }
     function set(v) {
       on = v;
-      if (on) { if (!ctx && !build()) { on = false; } else { ctx.resume(); master.gain.setTargetAtTime(.9, ctx.currentTime, .8); } }
-      else if (ctx) master.gain.setTargetAtTime(0, ctx.currentTime, .25);
+      if (on) { if (!ctx && !build()) { on = false; } else { ctx.resume(); fade(.9, .8); } }
+      else if (ctx) fade(0, .25);
       store.set('ao-sound', on ? 'on' : 'off'); wasEnd = false;
       fns.forEach(function (f) { f(on); });
     }
     var SCALE = [1, 9 / 8, 5 / 4, 4 / 3, 3 / 2, 5 / 3, 15 / 8, 2];   // a just scale on F0 x 4
-    function ding(xFrac) {
-      if (!on || !ctx) return; var t = ctx.currentTime, f = F0 * 4 * SCALE[clamp(Math.floor(xFrac * SCALE.length), 0, SCALE.length - 1)];
+    var lastNote = -1;
+    function ding() {
+      if (!on || !ctx || ctx.state !== 'running') return;
+      var n; do { n = Math.floor(Math.random() * SCALE.length); } while (n === lastNote); lastNote = n;   // a random note, never the same twice in a row
+      var t = ctx.currentTime, f = F0 * 4 * SCALE[n];
       [[1, .09], [2, .025]].forEach(function (mg) { var o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = f * mg[0]; var e = ctx.createGain(); e.gain.setValueAtTime(0, t); e.gain.linearRampToValueAtTime(mg[1], t + .008); e.gain.exponentialRampToValueAtTime(.0001, t + 1.7); o.connect(e); e.connect(bus); o.start(t); o.stop(t + 1.8); });
     }
+    // The music starts by itself and fades in, unless the visitor turned it off before. Browsers hold
+    // audio back until the first interaction with a site, so if it is held, the first gesture releases it.
+    var held = false;
+    function begin() {
+      if (started || pref === 'off') return; started = true; set(true);
+      if (ctx && ctx.state !== 'running') { held = true; ctx.resume().then(function () { if (held && ctx.state === 'running') { held = false; fade(.9, .8, true); } }, function () {}); }
+    }
+    function release() {
+      if (!held || !ctx || !on) return; held = false;
+      ctx.resume().then(function () { fade(.9, .8, true); }, function () {});
+    }
+    begin();
     addEventListener('pointerdown', function (e) {
       if (e.target.closest && e.target.closest('.js-snd')) return;
-      if (!started) { started = true; if (pref !== 'off') set(true); }
-      ding(e.clientX / innerWidth);
+      release(); ding();
     }, { capture: true });
-    document.addEventListener('visibilitychange', function () { if (!ctx) return; if (document.hidden) ctx.suspend(); else if (on) ctx.resume(); });
+    addEventListener('keydown', release, { capture: true });
+    addEventListener('touchend', release, { capture: true, passive: true });
+    // moving between pages: fade out before leaving; the next page fades in on arrival
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('a[href]'); if (!a || a.target || a.hasAttribute('download')) return;
+      var u; try { u = new URL(a.href, location.href); } catch (err) { return; }
+      if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search)) return;
+      if (!on || !ctx || ctx.state !== 'running') return;
+      e.preventDefault(); fade(0, .07);
+      setTimeout(function () { location.href = u.href; }, 300);
+    });
+    addEventListener('pageshow', function (e) { if (e.persisted && on && ctx) { ctx.resume(); fade(.9, .8, true); } });
+    // leaving and returning to the browser tab fades too
+    var sleepT = null;
+    document.addEventListener('visibilitychange', function () {
+      if (!ctx) return; clearTimeout(sleepT);
+      if (document.hidden) { fade(0, .12); sleepT = setTimeout(function () { ctx.suspend(); }, 600); }
+      else if (on) { ctx.resume(); fade(.9, .8); }
+    });
     return {
       isOn: function () { return on; },
-      toggle: function () { started = true; set(!on); if (on) setTimeout(function () { ding(.5); }, 60); },
+      toggle: function () { started = true; held = false; set(!on); if (on) setTimeout(ding, 60); },
       ding: ding,
       onChange: function (f) { fns.push(f); },
       end: function (v) { if (!ctx || !on || v === wasEnd) return; wasEnd = v; humG.gain.setTargetAtTime(v ? .06 : 0, ctx.currentTime, v ? 1.4 : .8); }

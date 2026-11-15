@@ -119,9 +119,9 @@ body.vpage .nav{background:var(--veil);backdrop-filter:blur(10px);-webkit-backdr
 /* ============================================================
    Home: one sticky stage, scrolled through sideways
    ============================================================ */
-.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;overflow:clip}
 .track{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform;transition:opacity .4s ease}
-.ch{position:relative;overflow:hidden;flex:0 0 100vw;height:100%;padding:86px var(--gut-r) 92px var(--gut)}
+.ch{position:relative;overflow:hidden;overflow:clip;flex:0 0 100vw;height:100%;padding:86px var(--gut-r) 92px var(--gut)}
 [data-depth]{transform:translate3d(var(--px,0),0,0)}
 svg.art{overflow:visible}
 svg.art .d{fill:none;stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--r,1))}
