@@ -197,7 +197,7 @@
     begin();
     addEventListener('pointerdown', function (e) {
       if (e.target.closest && e.target.closest('.js-snd')) return;
-      release(); ding();
+      release(); if (!(e.target.closest && e.target.closest('[data-quiet]'))) ding();   // some controls stay silent
     }, { capture: true });
     addEventListener('keydown', release, { capture: true });
     addEventListener('touchend', release, { capture: true, passive: true });

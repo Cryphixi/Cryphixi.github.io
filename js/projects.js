@@ -112,8 +112,6 @@
   function show(i) {
     if (i === shown) return; var first = shown < 0; shown = i; bloomT = performance.now();
     if (first || reduce) { fill(i); return; }
-    // each arrival plays the ding at the planet's position
-    var r = planetEls[i].g.getBoundingClientRect(); AO.snd.ding((r.left + r.width / 2) / innerWidth);
     pw.classList.add('out'); setTimeout(function () { fill(shown); pw.classList.remove('out'); }, 260);
   }
 
@@ -127,7 +125,7 @@
   AO.onFrame(function (now) {
     if (document.body.classList.contains('listmode')) return;
     var span = runway.offsetHeight - innerHeight, pr = AO.clamp((scrollY - runTop()) / Math.max(1, span), 0, 1);
-    var target = pr * (N - 1); s = reduce ? target : s + (target - s) * .12;
+    var target = pr * (N - 1); s = reduce ? target : s + (target - s) * .06;   // a slow turn, so the watercolor has time to spread
     var act = Math.round(s); show(act);
     if (pframe.firstChild && pframe.firstChild.style) pframe.firstChild.style.setProperty('--w', reduce ? 1 : AO.clamp((now - wipeT) / 500, 0, 1));
     CATS.forEach(function (c, ci) {
@@ -169,7 +167,7 @@
   AO.addSource(function (add, now) {
     if (shown < 0 || document.body.classList.contains('listmode')) return;
     var st = runway.getBoundingClientRect(); if (st.bottom < 0 || st.top > innerHeight) return;
-    var r = planetEls[shown].g.getBoundingClientRect(), k = reduce ? 1 : AO.clamp((now - bloomT) / 1400, 0, 1), e = 1 - Math.pow(1 - k, 3), sz = Math.min(innerWidth, innerHeight * 1.3);
+    var r = planetEls[shown].g.getBoundingClientRect(), k = reduce ? 1 : AO.clamp((now - bloomT) / 1750, 0, 1), e = 1 - Math.pow(1 - k, 3), sz = Math.min(innerWidth, innerHeight * 1.3);
     var x = r.left + r.width / 2, y = r.top + r.height / 2, ci = CATS[P[shown].c].ci;
     add(x, y, sz * .26 * (.35 + .65 * e), .55 + .35 * e, ci);
     add(x - sz * .2, y + sz * .14, sz * .13 * e, .5 * e, ci);
