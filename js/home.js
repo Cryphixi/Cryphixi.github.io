@@ -30,7 +30,12 @@
   // "Work" goes to the case chapters
   var workLinks = [].slice.call(document.querySelectorAll('[data-nav="work"]'));
   workLinks.forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); AO.closeMenu(); go(2); }); });
-  if (location.hash === '#work') requestAnimationFrame(function () { scrollTo({ top: 2 * vw }); });
+  // Arriving on Home always starts at Arrival (only the Work link lands on the cases). The browser must not
+  // restore an old scroll position, and nothing may scroll the stage itself sideways.
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
+  function land() { stage.scrollLeft = 0; stage.scrollTop = 0; scrollTo(0, location.hash === '#work' ? 2 * vw : 0); }
+  land(); addEventListener('pageshow', land); addEventListener('hashchange', land);
+  stage.addEventListener('scroll', function () { stage.scrollLeft = 0; stage.scrollTop = 0; });
   document.getElementById('endMail').innerHTML = AO.mailHTML(); AO.wireCopy(document.getElementById('endMail'));
 
   var reveal = new Float32Array(N), hov = new Float32Array(N), textP = new Float32Array(N);
