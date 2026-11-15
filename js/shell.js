@@ -62,7 +62,7 @@
   };
 
   /* ---------- Nav, phone menu, footer markup ---------- */
-  var NAV = [['Work', 'index.html#work', 'work'], ['Timeline', 'timeline.html', 'timeline'], ['Projects', 'projects.html', 'projects'], ['Connect', 'connect.html', 'connect'], ['Resume', 'resume.html', 'resume']];
+  var NAV = [['Work', 'index.html', 'work'], ['Timeline', 'timeline.html', 'timeline'], ['Projects', 'projects.html', 'projects'], ['Connect', 'connect.html', 'connect'], ['Resume', 'resume.html', 'resume']];
   var links = function () {
     return NAV.map(function (n) { return '<a class="pg" href="' + n[1] + '" data-nav="' + n[2] + '"' + (n[2] === PAGE ? ' aria-current="page"' : '') + '>' + n[0] + '</a>'; }).join('');
   };
@@ -173,7 +173,7 @@
       if (on) { if (!ctx && !build()) { on = false; } else { ctx.resume(); fade(.9, .8); } }
       else if (ctx) fade(0, .25);
       store.set('ao-sound', on ? 'on' : 'off'); wasEnd = false;
-      fns.forEach(function (f) { f(on); });
+      notify();
     }
     var SCALE = [1, 9 / 8, 5 / 4, 4 / 3, 3 / 2, 5 / 3, 15 / 8, 2];   // a just scale on F0 x 4
     var lastNote = -1;
@@ -185,22 +185,23 @@
     }
     // The music starts by itself and fades in, unless the visitor turned it off before. Browsers hold
     // audio back until the first interaction with a site, so if it is held, the first gesture releases it.
+    // While held, the toggle shows sound as off (nothing is audible yet) and flips on the moment it plays.
     var held = false;
+    function notify() { fns.forEach(function (f) { f(on && !held); }); }
     function begin() {
       if (started || pref === 'off') return; started = true; set(true);
-      if (ctx && ctx.state !== 'running') { held = true; ctx.resume().then(function () { if (held && ctx.state === 'running') { held = false; fade(.9, .8, true); } }, function () {}); }
+      if (ctx && ctx.state !== 'running') { held = true; notify(); ctx.resume().then(function () { if (held && ctx.state === 'running') { held = false; fade(.9, .8, true); notify(); } }, function () {}); }
     }
     function release() {
-      if (!held || !ctx || !on) return; held = false;
-      ctx.resume().then(function () { fade(.9, .8, true); }, function () {});
+      if (!held || !ctx || !on) return;
+      ctx.resume().then(function () { if (!held) return; held = false; fade(.9, .8, true); notify(); }, function () {});
     }
     begin();
     addEventListener('pointerdown', function (e) {
       if (e.target.closest && e.target.closest('.js-snd')) return;
       release(); if (!(e.target.closest && e.target.closest('[data-quiet]'))) ding();   // some controls stay silent
     }, { capture: true });
-    addEventListener('keydown', release, { capture: true });
-    addEventListener('touchend', release, { capture: true, passive: true });
+    ['keydown', 'touchend', 'mousedown', 'click'].forEach(function (ev) { addEventListener(ev, release, { capture: true, passive: true }); });
     // moving between pages: fade out before leaving; the next page fades in on arrival
     document.addEventListener('click', function (e) {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -220,8 +221,13 @@
       else if (on) { ctx.resume(); fade(.9, .8); }
     });
     return {
-      isOn: function () { return on; },
-      toggle: function () { started = true; held = false; set(!on); if (on) setTimeout(ding, 60); },
+      isOn: function () { return on && !held; },
+      // clicking the toggle while the browser holds the music starts it rather than turning it off
+      toggle: function () {
+        started = true;
+        if (held && on) { held = false; ctx.resume().then(function () { fade(.9, .8, true); setTimeout(ding, 60); }, function () {}); notify(); return; }
+        set(!on); if (on) setTimeout(ding, 60);
+      },
       ding: ding,
       onChange: function (f) { fns.push(f); },
       end: function (v) { if (!ctx || !on || v === wasEnd) return; wasEnd = v; humG.gain.setTargetAtTime(v ? .06 : 0, ctx.currentTime, v ? 1.4 : .8); }
