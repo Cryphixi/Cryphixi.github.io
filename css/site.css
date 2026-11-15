@@ -45,7 +45,7 @@ main,.pfoot,.scroller{position:relative;z-index:1}
 .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:30;height:var(--nav-h);display:flex;align-items:center;gap:14px;padding-left:var(--gut);padding-right:var(--gut-r);pointer-events:none}
 .nav > *{pointer-events:auto}
 body.vpage .nav{background:var(--veil);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.brand{margin-right:auto;display:block;width:50px;height:38px;flex:0 0 50px;background:var(--ink);-webkit-mask:url(../public/logo.png) left center/contain no-repeat;mask:url(../public/logo.png) left center/contain no-repeat}
+.brand{margin-right:auto;display:block;width:74px;height:56px;flex:0 0 74px;background:var(--ink);-webkit-mask:url(../public/logo.png) left center/contain no-repeat;mask:url(../public/logo.png) left center/contain no-repeat}
 .nav nav{display:flex;gap:4px}
 .pg{position:relative;z-index:0;padding:6px 10px;color:var(--soft);text-decoration:none;transition:color .2s}
 .pg::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--box-black);transform:scaleX(0);transform-origin:left;transition:transform .28s cubic-bezier(.3,.7,.2,1)}

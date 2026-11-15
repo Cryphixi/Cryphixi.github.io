@@ -52,7 +52,7 @@
   var line = 'M' + order.map(function (oi) { return pos[oi].x.toFixed(1) + ' ' + pos[oi].y.toFixed(1); }).join(' L');
   var years = '', seen = {};
   order.forEach(function (oi) { var y = year(ORGS[oi]); if (seen[y]) return; seen[y] = 1; years += '<path class="ax" d="M' + pos[oi].x.toFixed(1) + ' ' + (pos[oi].y + 4).toFixed(1) + 'V97"/><text x="' + pos[oi].x.toFixed(1) + '" y="100" text-anchor="middle" style="font-size:2.6px;letter-spacing:.3px">' + y + '</text>'; });
-  svg.innerHTML = '<path class="ax" d="M2 97H98"/>' + years + '<path class="th" d="' + line + '" pathLength="1"/>';
+  svg.innerHTML = '<path class="ax" d="M2 97H98"/>' + years + '<path class="th" d="' + line + '"/>';
   var stars = ORGS.map(function (o, i) {
     var b = document.createElement('button'); b.type = 'button'; b.className = 'ostar' + (pos[i].k % 2 ? ' up' : '');
     b.style.left = pos[i].x + '%'; b.style.top = pos[i].y + '%'; b.setAttribute('aria-label', o.name + ', joined ' + o.joined);
@@ -109,13 +109,15 @@
   var mail = document.getElementById('socMail');
   if (mail) { mail.innerHTML = AO.mailHTML(); AO.wireCopy(mail); }
 
-  // the thread between the stars draws itself as the constellation scrolls in
+  // the thread between the stars draws itself left to right as the constellation scrolls in.
+  // A clip, not a dash offset: dashes break up under the stretched (non-uniform) SVG scale.
   var th = svg.querySelector('.th'), drawn = 0;
-  th.style.strokeDasharray = 1; th.style.strokeDashoffset = reduce ? 0 : 1;
+  function clipTo(t) { th.style.clipPath = t >= 1 ? 'none' : 'inset(-10% ' + ((1 - t) * 100).toFixed(2) + '% -10% 0)'; }
+  clipTo(reduce ? 1 : 0);
   AO.onFrame(function () {
     if (reduce || drawn >= 1) return;
     var r = sky.getBoundingClientRect(), t = AO.clamp((innerHeight * .85 - r.top) / (innerHeight * .5), 0, 1);
-    if (t > drawn) { drawn = t; th.style.strokeDashoffset = 1 - drawn; }
+    if (t > drawn) { drawn = t; clipTo(drawn); }
   });
 
   AO.reveal(document.querySelectorAll('#socials, #orgs'));
