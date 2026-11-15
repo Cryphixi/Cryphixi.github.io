@@ -2,58 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume — Allena Oglivie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Resume: Allena Oglivie</title>
   <link rel="icon" type="image/png" href="public/favicon.png">
   <link rel="apple-touch-icon" href="public/favicon.png">
-  <link rel="stylesheet" href="css/fonts.css">
+  <script>try{var t=localStorage.getItem('ao-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=IBM+Plex+Mono:wght@300;400&display=swap">
   <link rel="stylesheet" href="css/site.css">
 </head>
-<body>
-  <div class="side-stars left" aria-hidden="true"></div>
-  <div class="side-stars right" aria-hidden="true"></div>
-
-  <nav class="site-nav" aria-label="Primary">
-    <a href="index.html" class="nav-brand" aria-label="Allena Oglivie — Home"><img src="public/nameLogo.png" alt="Allena Oglivie"></a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="resume.html" class="active">Resume</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="organizations.html">Organizations</a>
-      <a href="socials.html">Socials</a>
-    </div>
-  </nav>
-  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-
-  <main>
-    <header class="page-head" style="max-width:700px;">
-      <h1>Resume</h1>
-      <div class="section-rule" aria-hidden="true"></div>
+<body data-page="resume" class="vpage">
+  <main class="page">
+    <header class="phead haze" data-nobloom>
+      <p class="mono soft k rv">Resume, then Portfolio</p>
+      <h1 class="rv">Resume</h1>
     </header>
 
-    <section class="resume-wrap">
-      <div class="doc-frame">
-        <div class="doc-page">
-          <iframe src="public/Allena_Oglivie_Resume.pdf#toolbar=0&navpanes=0&view=FitH" title="Allena Oglivie — Resume"></iframe>
-        </div>
-      </div>
-      <a class="outline-link" href="public/Allena_Oglivie_Resume.pdf" target="_blank" rel="noopener">Download PDF &#8594;</a>
+    <section class="rsec" id="resume">
+      <div class="frame doc"><iframe src="public/Allena_Oglivie_Resume.pdf#toolbar=0&navpanes=0&view=FitH" title="Allena Oglivie, resume" loading="lazy"></iframe></div>
+      <a class="mono dl" href="public/Allena_Oglivie_Resume.pdf" download>Download PDF &#8595;</a>
     </section>
 
-    <footer class="site-footer">
-      <div class="footer-stars" aria-hidden="true"></div>
-      <div class="footer-inner">
-        <div class="footer-mark"><img src="public/nameLogo.png" alt="Allena Oglivie" /></div>
-        <div class="footer-links">
-          <a href="https://www.linkedin.com/in/allena-oglivie/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/Cryphixi" target="_blank" rel="noopener">GitHub</a>
-          <a href="#">Handshake</a>
-          <a href="mailto:ogfay05@gmail.com">Email</a>
-        </div>
-      </div>
-    </footer>
+    <section class="rsec" id="portfolio">
+      <h2 class="sec-h">Portfolio</h2>
+      <div class="soon"><p class="mono soft">PDF portfolio</p><p>Coming soon</p></div>
+    </section>
   </main>
 
+  <script src="js/contact.js"></script>
   <script src="js/shell.js"></script>
 </body>
 </html>

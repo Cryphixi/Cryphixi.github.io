@@ -1,53 +1,49 @@
-# Allena Oglivie — Portfolio
+# Allena Oglivie: Portfolio
 
-Personal portfolio site for Allena Oglivie (senior CS @ UC Berkeley, targeting
-game engineering). Static HTML, CSS, and vanilla JavaScript, deployed on GitHub
-Pages. No build step.
+Personal portfolio site for Allena Oglivie, HCI and game designer at UC Berkeley.
+Static HTML, CSS and vanilla JavaScript on GitHub Pages. No build step, no framework.
+
+The look is **Watercolor Futurism**: thin lines on cool paper, a few bold colour
+boxes, and watercolor that arrives as you progress. The design handoff (note,
+tokens and prototypes) is in `design_handoff/watercolor-futurism/`.
 
 ## Pages
 
-- `index.html` — home: fluid hero, profile, the pinned **Journey timeline**,
-  end-of-timeline handoff, and the Projects preview (`#projects`).
-- `organizations.html` — ledger index + idle-cycling flashcard stack.
-- `socials.html` — links and a hand-maintained "latest updates" list.
-- `resume.html` — document preview and PDF download.
+| File | Page |
+| --- | --- |
+| `index.html` | Home: the interactive portfolio, scrolled through sideways |
+| `timeline.html` | Timeline: a spine that draws as you scroll, with an overview mode |
+| `projects.html` | Projects: the orbit system, with a list view |
+| `cs180.html`, `cs184.html`, `cs160.html` | Class pages, one tab per assignment |
+| `connect.html` | Socials, latest updates and the organizations constellation |
+| `resume.html` | Resume, then Portfolio |
+| `organizations.html`, `socials.html` | Redirects to `connect.html#orgs` and `connect.html#socials` |
 
 ## Structure
 
-- `css/site.css` — the full design system (locked palette, serif-only type,
-  components, responsive rules).
-- `css/fonts.css` + `public/fonts/` — self-hosted EB Garamond, Cormorant
-  Garamond, and Pinyon Script (latin + latin-ext). No external font CDN.
-- `js/fluid.js` — the hero's real-time WebGL curl-noise fluid background
-  (hero-only, no pointer input; CSS ombré fallback if WebGL is unavailable).
-- `js/shell.js` — starfields, nav visibility/idle/toggle, and the two
-  shared-window background crossfades (hero → side margins → footer).
-- `js/timeline.js` — the pinned Journey timeline. **Data-driven:** edit the
-  `ENTRIES` array to add or reorder milestones; the section grows automatically
-  and academic-year separators (the `group` field) render between them.
-- `js/orgs.js` — the Organizations index + flashcard stack. Edit the `ORGS`
-  array to fill in roles/links; empty fields render the designed fill-in prompts.
+- `css/site.css`: the whole design system. All colours are CSS variables in one
+  `:root` block plus the dark overrides.
+- `js/shell.js`: shared by every page. Nav and phone menu, settings icons, theme,
+  the WebGL2 watercolor background (blooms plus the wet brush simulation), sound,
+  text arrival and the footer.
+- `js/contact.js`: the contact address shown in the footer, on Home and on Connect.
+- `js/home.js`: Home's sideways journey, armillary, case pieces and case pop-up.
+- `js/timeline.js`: the Timeline. Data-driven through `ENTRIES`.
+- `js/projects.js`: the orbit system. Data-driven through `CATS` and `P`.
+- `js/orgs.js`: the organizations constellation. Data-driven through `ORGS`.
+- `js/class.js`: the assignment tabs on class pages.
 
 ## Editing content
 
-- **Timeline:** `js/timeline.js` → `ENTRIES`. Keep newest-first; keep each
+- **Email:** `js/contact.js`.
+- **Timeline:** `js/timeline.js`, `ENTRIES`. Keep newest first and keep each
   `group` (academic year) contiguous.
-- **Organizations:** `js/orgs.js` → `ORGS`.
-- **Socials updates:** `socials.html` → the `.feed-item` blocks.
-- **Resume PDF:** `resume.html` links `Allena_Oglivie_Resume.pdf`.
-
-## Still to add
-
-- Real imagery: profile photo, timeline milestone images, project thumbnails.
-- Copy for milestones 5–6 and the organizations without roles/links yet.
-
-## Design source
-
-The design handoff (brief, spec, and prototypes) lived in a separate
-`design_handoff_journey_portfolio` bundle. The previous version of the site is
-preserved on the `old-version` branch.
+- **Projects:** `js/projects.js`, `P`. A link with an empty url shows as "Coming soon".
+- **Organizations:** `js/orgs.js`, `ORGS`.
+- **Latest updates:** `connect.html`, the `.feed` list.
+- **Class pages:** the `.csec` sections in each class file; the tabs build themselves.
+- **Home case pop-ups:** `js/home.js`, `CASES`.
 
 ## Running locally
 
-No build required. Serve the folder statically, e.g. `python3 -m http.server`,
-and open `index.html`.
+Serve the folder statically, for example `python -m http.server`, and open `index.html`.
