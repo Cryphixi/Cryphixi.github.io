@@ -18,13 +18,13 @@
       <p class="k"><span class="mono box" style="background:var(--box-lilac)">Sites, games, classes, tools</span></p>
       <h1>Projects</h1>
       <p>Each coloured orbit is a category and each planet is a project. Scroll down to turn forward, up to turn back, or click any orbit or planet to go straight there.</p>
-      <div class="legend" id="legend"></div>
+      <div class="legend" id="legend" data-quiet></div>
       <button class="mono lbtn viewbtn" id="viewbtn" type="button" aria-pressed="false">See as a list</button>
     </section>
 
     <div class="runway" id="runway">
       <div class="ostage">
-        <div class="sys"><svg id="sys" viewBox="40 130 920 740" role="group" aria-label="Project system: categories as orbits, projects as planets"></svg>
+        <div class="sys" data-quiet><svg id="sys" viewBox="40 130 920 740" role="group" aria-label="Project system: categories as orbits, projects as planets"></svg>
           <p class="mono hint">Scroll down for next, up for previous · click an orbit or a planet</p></div>
         <div class="rpanel">
           <div class="swap" id="pw" aria-live="polite">
@@ -34,7 +34,7 @@
             <p class="p-desc" id="pdesc"></p>
             <div class="p-links mono" id="plinks"></div>
           </div>
-          <div class="oprog" id="oprog"></div>
+          <div class="oprog" id="oprog" data-quiet></div>
         </div>
       </div>
     </div>
