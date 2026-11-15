@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Connect: Allena Oglivie</title>
+  <link rel="icon" type="image/png" href="public/favicon.png">
+  <link rel="apple-touch-icon" href="public/favicon.png">
+  <script>try{var t=localStorage.getItem('ao-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=IBM+Plex+Mono:wght@300;400&display=swap">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="connect" class="vpage">
+  <main class="page">
+    <header class="phead haze" data-nobloom>
+      <p class="mono soft k rv">Organizations and socials</p>
+      <h1 class="rv">Connect</h1>
+      <p class="rv">Where to find me. Send me an email to start chatting!</p>
+    </header>
+
+    <section id="socials">
+      <div class="soc mono haze">
+        <a class="rv" href="https://www.linkedin.com/in/allena-oglivie/" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5H17.5V17.5H2.5ZM6 8.5V14M6 5.8V6.2M9.5 14V8.5M9.5 11C9.5 9.4 10.6 8.5 11.8 8.5S14 9.4 14 11V14"/></svg><span class="t">LinkedIn</span></a>
+        <a class="rv" href="https://github.com/Cryphixi" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5.5L2.5 10L7 14.5M13 5.5L17.5 10L13 14.5M11.5 3.5L8.5 16.5"/></svg><span class="t">GitHub</span></a>
+        <a class="rv" href="https://app.joinhandshake.com/profiles/allenaoglivie" target="_blank" rel="noopener"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 8L6 5L10 7L14 5L18 8M2 8V13L5 13M18 8V13L15 13M5 13L9 16L15 13M10 7L7.5 10.5L10 12L12 10"/></svg><span class="t">Handshake</span></a>
+        <span class="mail rv"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 4.5H17.5V15.5H2.5ZM2.5 4.5L10 11L17.5 4.5"/></svg><span id="socMail" style="display:inline-flex;gap:12px;align-items:baseline;flex-wrap:wrap;text-transform:none;letter-spacing:.04em"></span></span>
+      </div>
+
+      <div class="haze">
+        <p class="sub-k mono rv"><span>Latest updates</span><i></i></p>
+        <p class="soft rv" style="margin:0 0 10px">A hand-maintained list! LinkedIn has no public feed API, so these are dropped in by hand</p>
+        <ul class="feed rv">
+          <li><span class="mono f-date">June 2026</span><span>Started the GMG x 2K Mentorship Program: first sessions with mentors from the Engineering Grad Program.</span></li>
+          <li><span class="mono f-date">May 2026</span><span>Shipped the GamesCrafters website overhaul: new game browser, cleaner match views.</span></li>
+          <li><span class="mono f-date">Dec 2025</span><span>"Snowfall" final project published: rendering and accumulation of snow in a path tracer.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="orgs" id="orgs">
+      <div class="haze">
+        <h2 class="sec-h rv">Organizations</h2>
+        <p class="orgs-lead rv">The programs and communities that helped me grow. Select one to learn more.</p>
+        <button class="mono lbtn rv" id="orgview" type="button" aria-pressed="false">See as a list</button>
+      </div>
+      <div class="cgrid">
+        <div class="sky2" id="osky"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg></div>
+        <div class="ocard swap" id="ocard" aria-live="polite"></div>
+      </div>
+      <div class="orglist" id="orglist"></div>
+    </section>
+  </main>
+
+  <script src="js/contact.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/orgs.js"></script>
+</body>
+</html>

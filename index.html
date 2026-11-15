@@ -2,224 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Allena Oglivie — Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Allena Oglivie: HCI and game designer</title>
+  <meta name="description" content="Interactive portfolio of Allena Oglivie, HCI and game designer at UC Berkeley.">
   <link rel="icon" type="image/png" href="public/favicon.png">
   <link rel="apple-touch-icon" href="public/favicon.png">
-  <link rel="stylesheet" href="css/fonts.css">
+  <script>try{var t=localStorage.getItem('ao-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=IBM+Plex+Mono:wght@300;400&display=swap">
   <link rel="stylesheet" href="css/site.css">
 </head>
-<body>
-  <!-- Background system: zone 1 (hero fluid + stars), zone 2 (side margins) -->
-  <canvas id="fluid-canvas" aria-hidden="true"></canvas>
-  <div class="hero-stars" aria-hidden="true"></div>
-  <div class="side-stars left" aria-hidden="true"></div>
-  <div class="side-stars right" aria-hidden="true"></div>
+<body data-page="home">
+  <main class="scroller" id="scroller">
+    <div class="stage">
+      <div class="track" id="track">
+        <svg class="thread" id="thread" aria-hidden="true"><path class="br" id="thBr"/><path id="thPath"/><g id="thDots"></g></svg>
 
-  <nav class="site-nav" aria-label="Primary">
-    <a href="index.html" class="nav-brand" aria-label="Allena Oglivie — Home"><img src="public/nameLogo.png" alt="Allena Oglivie"></a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="resume.html">Resume</a>
-      <a href="#projects">Projects</a>
-      <a href="organizations.html">Organizations</a>
-      <a href="socials.html">Socials</a>
-    </div>
-  </nav>
-  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-
-  <main>
-    <!-- Hero zone (hero + profile share the fluid/star field) -->
-    <div class="hero-zone">
-      <section class="hero">
-        <div class="logo-mark"><img src="public/logo.png" alt="Allena Oglivie logo" /></div>
-        <h1 class="hero-name">Allena Oglivie</h1>
-      </section>
-      <section class="profile">
-        <div class="profile-photo">
-          <span class="crop tl-h"></span><span class="crop tl-v"></span>
-          <span class="crop tr-h"></span><span class="crop tr-v"></span>
-          <span class="crop bl-h"></span><span class="crop bl-v"></span>
-          <span class="crop br-h"></span><span class="crop br-v"></span>
-          <img src="public/profile-portrait.jpg" alt="Allena Oglivie"
-               onload="this.parentElement.classList.add('has-photo')"
-               onerror="this.remove()">
-          <span class="ph-fallback">profile photo</span>
-        </div>
-        <div class="profile-copy">
-          <h2 class="profile-name">Allena Oglivie</h2>
-          <p class="profile-tagline">Studying Computer Science I am a senior at University of California, Berkeley. I build toward game engineering, procedural generation via Machine Learning, AI, and creative tooling</p>
-        </div>
-      </section>
-    </div>
-
-    <!-- Journey intro -->
-    <section class="journey-intro">
-      <h2>My Journey</h2>
-      <p class="passion">I start from what a game should make you feel and the visuals, then build the systems that get it there. Scroll through, from where I am now back to where I started.</p>
-    </section>
-
-    <!-- Journey timeline: scrolling list + sticky polaroid -->
-    <section class="journey" id="tl-section">
-      <div class="journey-grid">
-        <div class="tl-list" id="tl-track">
-          <div class="living-line" aria-hidden="true"></div>
-          <!-- steps + year separators injected by timeline.js -->
-        </div>
-        <div class="tl-aside">
-          <div class="polaroid">
-            <div class="ledger-head">
-              <span class="diamond" aria-hidden="true"></span>
-              <span class="index" id="tl-index">01 / 01</span>
-              <span class="rule" aria-hidden="true"></span>
-              <span class="cap-date" id="tl-capdate"></span>
-            </div>
-            <div class="image-well" id="tl-well">
-              <span class="crop tl-h"></span><span class="crop tl-v"></span>
-              <span class="crop tr-h"></span><span class="crop tr-v"></span>
-              <span class="crop bl-h"></span><span class="crop bl-v"></span>
-              <span class="crop br-h"></span><span class="crop br-v"></span>
-              <!-- frames injected by timeline.js -->
-            </div>
-            <div class="caption" id="tl-caption">
-              <div class="c-title"></div>
-              <div class="c-note"></div>
-              <div class="c-photo-note" hidden></div>
-              <div class="c-links" hidden></div>
-            </div>
+        <section class="ch c0" data-ch="0" aria-label="Arrival">
+          <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+          <svg class="art ring" viewBox="0 0 1000 1000" aria-hidden="true">
+            <circle class="d" cx="500" cy="500" r="470" pathLength="1"/>
+            <path class="d" d="M500 0V60M500 940V1000M0 500H60M940 500H1000" pathLength="1"/>
+            <circle class="f" cx="838" cy="402" r="5"/><circle class="f" cx="171" cy="610" r="3"/><circle class="f" cx="300" cy="140" r="2"/><circle class="f" cx="705" cy="880" r="2.5"/>
+            <text x="512" y="44">N</text><text x="512" y="972">S</text><text x="68" y="492">E</text><text x="922" y="492">W</text>
+          </svg>
+          <div class="center">
+            <p class="mono kick hl" data-hl="1" title="Click to change colour">Interactive portfolio · 2026 / 27</p>
+            <h1><span>Allena</span><span class="hl" data-hl="0" title="Click to change colour">Oglivie</span></h1>
+            <p class="sub">HCI and game designer</p>
           </div>
-        </div>
+          <p class="mono go">Scroll to move through <i></i></p>
+        </section>
+
+        <section class="ch c1" data-ch="1" aria-label="About">
+          <div class="stmt s1" data-depth=".06"><span class="mono">Who</span><p>HCI and game designer at UC Berkeley, studying CS and Data Science.</p></div>
+          <div class="stmt s2" data-depth="-.04"><span class="mono">What I do</span><p>I design technology that adapts to people, using games as my lab: player experience, onboarding, and learnability.</p></div>
+          <div class="stmt s3 big" data-depth=".09"><span class="mono">Mission</span><p>We should not conform to the tools meant to make our lives easier. The tools should conform to us.</p></div>
+          <div class="stmt s4" data-depth="-.06"><span class="mono">Now</span><p>Website Lead at GamesCrafters. Applying to HCI master's programs for Fall 2027.</p></div>
+          <h2 class="ttl" data-depth=".05">About</h2>
+        </section>
+
+        <section class="ch st" data-ch="2" id="work" aria-label="GamesmanUni Redesign">
+          <div class="play" data-depth="-.06"><span class="mono hint">107 games and puzzles · move to search</span><canvas id="guC" aria-hidden="true"></canvas></div>
+          <div class="info" data-depth=".08"><p class="mono num"><span>01</span><i></i><span>GamesCrafters</span></p>
+            <h2>GamesmanUni Redesign</h2><p>Redesigning a research platform of 107 games and puzzles so new players find what they want without getting lost.</p>
+            <p class="mono meta">Website Lead · 2025 to present</p><button class="enter" data-open="0" type="button">Enter case <i></i></button></div>
+        </section>
+
+        <section class="ch st flip" data-ch="3" aria-label="Orbito">
+          <div class="play" data-depth="-.06"><span class="mono hint">Place a marble, then orbit</span><svg class="pl" id="orbS" viewBox="0 0 400 400" aria-label="Orbito board" role="img"></svg>
+            <div class="ctl"><span class="mono" id="orbState">Phase 1 · place</span><button type="button" id="orbGo">Orbit</button></div></div>
+          <div class="info" data-depth=".08"><p class="mono num"><span>02</span><i></i><span>GamesCrafters</span></p>
+            <h2>Orbito: Designing a Two-Phase Turn</h2><p>Turning a rotating physical board game into a click interface that still feels real, on top of a solver covering 20M+ positions.</p>
+            <p class="mono meta">Co-developer · Fall 2025</p><button class="enter" data-open="1" type="button">Enter case <i></i></button></div>
+        </section>
+
+        <section class="ch st" data-ch="4" aria-label="BALL x PIT Evolution Tracker">
+          <div class="play" data-depth="-.06"><span class="mono hint">Click to drop · matching balls evolve</span><canvas id="pitC" aria-hidden="true"></canvas></div>
+          <div class="info" data-depth=".08"><p class="mono num"><span>03</span><i></i><span>Personal project</span></p>
+            <h2>BALL x PIT Evolution Tracker</h2><p>A player tool the community built on: Pit Crew uses my tracker as its foundation.</p>
+            <p class="mono meta">Personal project · <span class="ph">[ADD TIMEFRAME]</span></p><button class="enter" data-open="2" type="button">Enter case <i></i></button></div>
+        </section>
+
+        <section class="ch st flip" data-ch="5" aria-label="LevelForger">
+          <div class="play" data-depth="-.06"><span class="mono hint">Generate, then validate</span><canvas id="lfC" aria-hidden="true"></canvas>
+            <div class="ctl"><span class="mono" id="lfStamp">Ready</span><button type="button" id="lfGo">Generate</button></div></div>
+          <div class="info" data-depth=".08"><p class="mono num"><span>04</span><i></i><span>AI4ALL</span></p>
+            <h2>LevelForger</h2><p>A generative model for game levels, with a validation pipeline that cut unplayable levels from 30% to 5%.</p>
+            <p class="mono meta">AI4ALL · <span class="ph">[ADD ROLE]</span></p><button class="enter" data-open="3" type="button">Enter case <i></i></button></div>
+        </section>
+
+        <section class="ch c6" data-ch="6" aria-label="The rest of the story">
+          <div class="tb">
+            <p class="mono soft" style="margin:0">05 · End of the path</p>
+            <h2>The rest<br>of the story</h2>
+            <p>Every case in full, with the research, the iterations and the outcomes, is in my PDF portfolio. It lives on the Resume and Portfolio page.</p>
+            <div class="links mono"><a href="resume.html">Resume and Portfolio</a><a href="https://github.com/Cryphixi" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/allena-oglivie/" target="_blank" rel="noopener">LinkedIn</a><span id="endMail"></span></div>
+          </div>
+        </section>
       </div>
-    </section>
-
-    <div class="scroll-rail" id="tl-rail" aria-hidden="true"><div class="fill"></div></div>
-    <div class="hud" id="tl-hud" aria-hidden="true"></div>
-
-    <!-- End of timeline -> Projects handoff -->
-    <section class="end-timeline">
-      <span class="kicker">End of timeline</span>
-      <p class="bridge">What I've been building since is all in one direction: game engineering, game AI, software engineering and the creative tooling around them! </p>
-      <div class="ornament" aria-hidden="true">
-        <span class="r-l"></span><span class="d"></span><span class="r-r"></span>
-      </div>
-      <p class="closing">Thank you for taking the time to look through my journey.</p>
-    </section>
-
-    <!-- Projects preview -->
-    <section class="projects" id="projects" style="scroll-margin-top: 90px;">
-      <h2>Projects</h2>
-
-      <div class="proj-group">
-        <div class="sub-label">UC Berkeley Upper Division Class Projects</div>
-        <div class="proj-grid">
-          <article class="proj-card">
-            <div class="thumb"><img src="public/timeline/snowfall-thumb.png" alt="Snowfall — snow dragon render" loading="lazy"></div>
-            <h3>CS184: Computer Graphics</h3>
-            <p class="p-desc">Rasterizer, MeshEdit, PathTracer and Cloth Simulation, plus the "Snowfall" final project.</p>
-            <div class="p-links">
-              <a href="https://cal-cs184-student.github.io/hw-webpages-Cryphixi/" target="_blank" rel="noopener">View coursework (all four HW) &#8594;</a>
-              <a href="https://c-herbert.github.io/cs184-final-project-webpage/" target="_blank" rel="noopener">View Snowfall final project &#8594;</a>
-            </div>
-          </article>
-          <article class="proj-card">
-            <div class="thumb thumb-slideshow">
-              <img class="slide show" src="public/cs180/proj0.webp" alt="CS180 Project 0: dolly zoom of a canteen on a bench">
-              <img class="slide" src="public/cs180/proj1.webp" alt="CS180 Project 1: colorized Prokudin-Gorskii plate">
-              <img class="slide" src="public/cs180/proj2.webp" alt="CS180 Project 2: blended oraple">
-              <img class="slide" src="public/cs180/proj3.webp" alt="CS180 Project 3: diffusion edits of the Campanile">
-              <img class="slide" src="public/cs180/proj4.webp" alt="CS180 Project 4: rectified and stitched mosaic">
-            </div>
-            <h3>CS180: Computer Vision</h3>
-            <p class="p-desc">Project webpages from Berkeley's computational photography and vision coursework.</p>
-            <a class="p-link" href="cs180.html">View project pages &#8594;</a>
-          </article>
-          <article class="proj-card">
-            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
-            <h3>CS160: User Interface Design</h3>
-            <p class="p-desc">Interface design coursework, from research through built prototype.</p>
-            <a class="p-link" href="#">View project &#8594;</a>
-          </article>
-        </div>
-      </div>
-
-      <div class="proj-group">
-        <div class="sub-label">Game development</div>
-        <div class="proj-grid">
-          <article class="proj-card">
-            <div class="thumb thumb-fluid"><canvas aria-hidden="true"></canvas></div>
-            <h3>Menses Mortis</h3>
-            <p class="p-desc">Want to know what is like to fight against adaptive NPCs?</p>
-            <a class="p-link" href="#">View project &#8594;</a>
-            <a class="p-link" href="https://docs.google.com/document/d/1OoOVOumWwJHKuHzXbsAstZZdh1TOY2M6wKxtw_hIfpM/edit?usp=sharing" target="_blank" rel="noopener">View game design doc &#8594;</a>
-          </article>
-          <article class="proj-card">
-            <div class="thumb"><img src="public/timeline/inheritance-lines-cover.png" alt="Inheritance Lines — pitch deck cover" loading="lazy"></div>
-            <h3>Inheritance Lines</h3>
-            <p class="p-desc">Narrative-driven game exploring the illusion of choice in a histoical setting.</p>
-            <div class="p-links">
-              <a href="#">View project &#8594;</a>
-              <a href="https://drive.google.com/file/d/1NoOqXFaJ92TeLSkbu1OXNY7ylpODPRWU/view?usp=sharing" target="_blank" rel="noopener">View design doc &#8594;</a>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="proj-group">
-        <div class="sub-label">AI / ML</div>
-        <div class="proj-grid">
-          <article class="proj-card">
-            <div class="thumb"><img src="public/timeline/Canopy_main_thumnail.png" alt="Canopy — workspace onboarding" loading="lazy"></div>
-            <h3>Canopy</h3>
-            <p class="p-desc">Taking game designer’s brainstorms into an engineer-ready NPC behavior spec! Try it by clicking the link below. </p>
-            <a class="p-link" href="https://canopy-beta-eight.vercel.app/" target="_blank" rel="noopener">View project &#8594;</a>
-          </article>
-          <article class="proj-card">
-            <div class="thumb"><img src="public/timeline/LevelForger_thumbnail.png" alt="LevelForger — VAE research poster" loading="lazy"></div>
-            <h3>LevelForger</h3>
-            <p class="p-desc">VAE-based procedural level generator — the contribution is the ML architecture.</p>
-            <div class="p-links">
-              <a href="https://drive.google.com/file/d/1J-tvLDZik0Ndo22orOdVE75lj6V-oRY5/view?usp=drive_link" target="_blank" rel="noopener">Watch video demo &#8594;</a>
-              <a href="https://drive.google.com/file/d/1oB_wB_Gk1ETjU6nDyGEFOg6IzMcThxC0/view?usp=sharing" target="_blank" rel="noopener">View slideshow &#8594;</a>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="proj-group">
-        <div class="sub-label">Community tools</div>
-        <div class="proj-grid">
-          <article class="proj-card">
-            <div class="thumb thumb-slideshow">
-              <img class="slide show" src="public/timeline/ballxpitTracker_thumbnail.png" alt="BALL x PIT Evolution Tracker — Base Balls view">
-              <img class="slide" src="public/timeline/ballxpitTracker_2thumbnail.png" alt="BALL x PIT Evolution Tracker — By Base Ball view">
-            </div>
-            <span class="badge">community favorite</span>
-            <h3>BALL x PIT Evolution Tracker</h3>
-            <p class="p-desc">A fan-made evolution and passive tracker with a team-builder matchmaker. Built out of personal need, I REALLY love this game. Now used daily by the game's Reddit and Discord community!</p>
-            <a class="p-link" href="https://cryphixi.github.io/ballxpit-tracker" target="_blank" rel="noopener">View tracker &#8594;</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer (shared component) -->
-    <footer class="site-footer">
-      <div class="footer-stars" aria-hidden="true"></div>
-      <div class="footer-inner">
-        <div class="footer-mark"><img src="public/nameLogo.png" alt="Allena Oglivie" /></div>
-        <div class="footer-links">
-          <a href="https://www.linkedin.com/in/allena-oglivie/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/Cryphixi" target="_blank" rel="noopener">GitHub</a>
-          <a href="#">Handshake</a>
-          <a href="mailto:ogfay05@gmail.com">Email</a>
-        </div>
-      </div>
-    </footer>
+      <div class="prog" id="prog"><div class="rail"></div><div class="fill" id="fill"></div></div>
+    </div>
   </main>
 
-  <script src="js/fluid.js"></script>
-  <script src="js/fluid-thumb.js"></script>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="lg" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feImage id="lgMap" x="0" y="0" width="10" height="10" preserveAspectRatio="none" result="map"/><feDisplacementMap in="SourceGraphic" in2="map" scale="70" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+  <div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="pT" aria-hidden="true">
+    <span class="tick a"></span><span class="tick b"></span><span class="tick c"></span><span class="tick e"></span>
+    <div class="ph1 mono"><span id="pK"></span><button class="x" id="pX" type="button">Close · Esc</button></div>
+    <h3 id="pT"></h3><p class="out" id="pO"></p><p class="mono meta" id="pM"></p>
+    <div class="shots mono" id="pS"></div>
+    <div class="pf mono"><span>Full case study · PDF <span class="ph">(Coming soon)</span></span><button class="enter" id="pN" type="button"></button></div>
+  </div>
+
+  <script src="js/contact.js"></script>
   <script src="js/shell.js"></script>
-  <script src="js/timeline.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

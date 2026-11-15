@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Projects: Allena Oglivie</title>
+  <link rel="icon" type="image/png" href="public/favicon.png">
+  <link rel="apple-touch-icon" href="public/favicon.png">
+  <script>try{var t=localStorage.getItem('ao-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=IBM+Plex+Mono:wght@300;400&display=swap">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="projects" class="vpage">
+  <main>
+    <section class="intro">
+      <p class="k"><span class="mono box" style="background:var(--box-lilac)">Sites, games, classes, tools</span></p>
+      <h1>Projects</h1>
+      <p>Each coloured orbit is a category and each planet is a project. Scroll down to turn forward, up to turn back, or click any orbit or planet to go straight there.</p>
+      <div class="legend" id="legend"></div>
+      <button class="mono lbtn viewbtn" id="viewbtn" type="button" aria-pressed="false">See as a list</button>
+    </section>
+
+    <div class="runway" id="runway">
+      <div class="ostage">
+        <div class="sys"><svg id="sys" viewBox="40 130 920 740" role="group" aria-label="Project system: categories as orbits, projects as planets"></svg>
+          <p class="mono hint">Scroll down for next, up for previous · click an orbit or a planet</p></div>
+        <div class="rpanel">
+          <div class="swap" id="pw" aria-live="polite">
+            <div class="p-top"><span class="mono box" id="pcat"></span><span class="mono idx" id="pidx"></span><span class="rule"></span></div>
+            <div class="frame" id="pframe"></div>
+            <h2 class="p-title"><span id="ptitle"></span></h2>
+            <p class="p-desc" id="pdesc"></p>
+            <div class="p-links mono" id="plinks"></div>
+          </div>
+          <div class="oprog" id="oprog"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="olist" id="list" aria-label="All projects"></section>
+  </main>
+
+  <script src="js/contact.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/projects.js"></script>
+</body>
+</html>

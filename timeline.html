@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Timeline: Allena Oglivie</title>
+  <link rel="icon" type="image/png" href="public/favicon.png">
+  <link rel="apple-touch-icon" href="public/favicon.png">
+  <script>try{var t=localStorage.getItem('ao-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=IBM+Plex+Mono:wght@300;400&display=swap">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="timeline" class="vpage">
+  <main class="page">
+    <header class="phead haze" data-nobloom>
+      <p class="mono soft k rv">My Journey</p>
+      <h1 class="rv">Timeline</h1>
+      <p class="rv">I start from what a game should make you feel and the visuals, then build the systems that get it there. Scroll through, from where I am now back to where I started.</p>
+      <button class="mono lbtn rv" id="ovb" type="button" aria-pressed="false">Overview</button>
+    </header>
+
+    <div class="tlbody">
+      <svg class="spine" id="spine" aria-hidden="true"><path class="sp-all"/><path class="sp-on"/><g class="sp-dots"></g></svg>
+      <ol class="tlist" id="tlist"><!-- year labels and entries injected by timeline.js --></ol>
+    </div>
+    <nav class="stepper" id="stepper" aria-label="Timeline steps"></nav>
+
+    <section class="tlend haze" data-nobloom>
+      <p class="mono soft rv">End of timeline</p>
+      <p class="rv">What I've been building since is all in one direction: game engineering, game AI, software engineering and the creative tooling around them!</p>
+      <p class="rv soft">Thank you for taking the time to look through my journey.</p>
+      <a class="mono ul rv" href="projects.html">See the projects</a>
+    </section>
+  </main>
+
+  <script src="js/contact.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>

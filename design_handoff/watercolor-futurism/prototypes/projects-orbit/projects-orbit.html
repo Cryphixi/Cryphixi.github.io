@@ -1,0 +1,292 @@
+<title>Projects Orbit Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap">
+<style>
+/* Layout: the Projects page as Allena's own logo grown into a system. The star sits at the centre, each category is an orbit,
+   each project is a planet. Scrolling turns the orbits; whichever planet reaches the front opens in the reading panel. */
+:root{
+  --games-line:#0b0a10;
+  --paper:#f4f4f7; --ink:#24222f; --soft:#5e5a70; --line:rgba(36,34,47,.55); --faint:rgba(36,34,47,.16); --veil:rgba(244,244,247,.78);
+  --black:#0b0a10; --blue:#1f55d4; --lilac:#7b5be0; --teal:#0f6f78; --on:#ffffff;
+  --f-thin:"Jost",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0c0d14;--ink:#e9e7f3;--soft:#a9a5bd;--line:rgba(233,231,243,.55);--faint:rgba(233,231,243,.14);--veil:rgba(12,13,20,.78);--black:#000;--games-line:#e9e7f3;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0c0d14;--ink:#e9e7f3;--soft:#a9a5bd;--line:rgba(233,231,243,.55);--faint:rgba(233,231,243,.14);--veil:rgba(12,13,20,.78);--black:#000;--games-line:#e9e7f3;color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-thin);font-weight:300;font-size:17px;line-height:1.55}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1px solid var(--blue);outline-offset:4px}
+.mono{font-family:var(--f-mono);font-weight:300;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
+.gut{padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.box{display:inline-block;color:var(--on);padding:.34em .7em .34em .8em}
+
+/* nav: Allena's name logo, bold black box on hover */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--veil)}
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:8;display:flex;align-items:center;gap:14px;height:68px;background:var(--veil);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{margin-right:auto;display:block;width:150px;height:44px;background:var(--ink);-webkit-mask:url(img/namelogo.png) left center/contain no-repeat;mask:url(img/namelogo.png) left center/contain no-repeat}
+.nav .pg{position:relative;z-index:0;padding:6px 10px;color:var(--soft)}
+.nav .pg::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--black);transform:scaleX(0);transform-origin:left;transition:transform .28s cubic-bezier(.3,.7,.2,1)}
+.nav .pg:hover,.nav .pg:focus-visible,.nav .pg[aria-current]{color:var(--on)}
+.nav .pg:hover::before,.nav .pg:focus-visible::before,.nav .pg[aria-current]::before{transform:scaleX(1)}
+.sets{display:flex;gap:4px;padding-left:12px;margin-left:4px;border-left:1px solid var(--faint)}
+.sets button{width:30px;height:30px;display:grid;place-items:center;background:none;border:0;color:var(--ink);opacity:.62;cursor:pointer}
+.sets svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1}
+@media (max-width:760px){.nav .pg{padding:6px 6px;font-size:10px;letter-spacing:.1em}.brand{width:44px;flex:0 0 44px}.nav nav{overflow-x:auto;min-width:0;scrollbar-width:none}.sets{padding-left:6px}}
+
+/* intro */
+.intro{padding-top:130px;padding-bottom:30px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;align-items:end;max-width:1320px;margin:0 auto}
+.intro .k{grid-column:1/-1;margin:0}
+.intro h1{grid-column:1/-1;margin:0;font-weight:200;font-size:clamp(54px,10.5vw,160px);letter-spacing:.22em;line-height:.9;text-transform:uppercase}
+.intro p{grid-column:1/7;margin:8px 0 0;color:var(--soft)}
+.legend{grid-column:7/13;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.legend button{display:flex;align-items:center;gap:10px;border:0;cursor:pointer;color:var(--on);padding:8px 12px;font:inherit;letter-spacing:inherit;text-transform:inherit;opacity:.5;transition:opacity .25s}
+.legend button.on,.legend button:hover,.legend button:focus-visible{opacity:1}
+.legend b{font-weight:300;opacity:.75}
+.viewbtn{grid-column:1/-1;justify-self:start;background:none;border:0;border-bottom:1px solid var(--ink);color:var(--ink);padding:4px 0;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;margin-top:6px}
+@media (max-width:860px){.intro p,.legend{grid-column:1/-1}.legend{justify-content:flex-start}}
+
+/* the system */
+.runway{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:2vw;padding-top:68px;box-sizing:border-box;max-width:1400px;margin:0 auto;overflow:hidden}
+.sys{position:relative;width:100%;height:100%;min-height:0}
+.sys svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.orbit{fill:none;stroke-width:1.2;vector-effect:non-scaling-stroke;opacity:.38;transition:opacity .4s,stroke-width .3s}
+.orbit.back{stroke-dasharray:3 6;opacity:.28}
+.og.on .orbit{opacity:1;stroke-width:1.8}
+.og.on .orbit.back{opacity:.6}
+.og.hov .orbit{opacity:.85;stroke-width:2.2}
+.hit{fill:none;stroke:transparent;stroke-width:22;vector-effect:non-scaling-stroke;pointer-events:stroke;cursor:pointer}
+.hit:focus-visible{outline:none;stroke:var(--faint)}
+.star{fill:var(--ink)}
+.planet{cursor:pointer}
+.planet .rim{fill:var(--paper);stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke}
+.planet.on .rim{stroke-width:1.6}
+.planet .halo{fill:none;stroke-width:1;vector-effect:non-scaling-stroke;opacity:0;transition:opacity .4s}
+.planet.on .halo{opacity:1}
+.planet text{font-family:var(--f-mono);font-size:13px;letter-spacing:.14em;fill:var(--soft);text-transform:uppercase}
+.olab{font-family:var(--f-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.olab rect{transition:opacity .3s}
+.olab text{fill:#fff}
+.reticle{fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke}
+
+/* reading panel */
+.panel{position:relative;min-width:0;padding-right:max(8px,env(safe-area-inset-right,0px))}
+.p-top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.p-top .idx{color:var(--soft)}
+.p-top .rule{flex:1;height:1px;background:var(--faint)}
+.frame{position:relative;aspect-ratio:16/10;border:1px solid var(--faint);overflow:hidden;background:var(--paper)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(0 calc((1 - var(--w,1)) * 100%) 0 0);transition:none}
+.frame .fit{object-fit:contain;padding:14px;box-sizing:border-box}
+.frame .none{position:absolute;inset:0;display:grid;place-items:center;color:var(--soft)}
+.frame .none svg{width:62%;height:62%;fill:none;stroke:var(--faint);stroke-width:1}
+.p-title{margin:22px 0 10px;font-weight:200;font-size:clamp(30px,3.4vw,52px);line-height:1.04}
+.p-title span{position:relative;z-index:0;padding:0 .08em;cursor:default;transition:color .25s}
+.p-title span::before{content:"";position:absolute;inset:0 -.1em;background:var(--black);z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.3,.7,.2,1)}
+.p-title span:hover{color:var(--on)}.p-title span:hover::before{transform:scaleX(1)}
+.p-desc{margin:0 0 18px;max-width:46ch;font-size:clamp(16px,1.25vw,19px)}
+.p-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+.p-links a{border-bottom:1px solid var(--ink);padding-bottom:2px}
+.p-links a::after{content:" \2192"}
+.badge{margin-left:10px;color:var(--lilac)}
+.swap{transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.swap.out{opacity:0;transform:translateX(-14px)}
+.prog{position:absolute;left:0;right:0;bottom:-58px;display:flex;align-items:center;gap:6px}
+.prog button.seg{flex:1;height:14px;background:none;border:0;padding:6px 0;cursor:pointer;position:relative}
+.prog button.seg::after{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:var(--faint)}
+.prog button.seg.on::after{background:var(--ink)}
+.prog button.seg:hover::after,.prog button.seg:focus-visible::after{background:var(--soft);height:3px}
+.step{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;background:none;border:1px solid var(--faint);color:var(--ink);cursor:pointer}
+.step:hover,.step:focus-visible{background:var(--black);color:var(--on);border-color:var(--black)}
+.step:disabled{opacity:.3;cursor:default;background:none;color:var(--ink);border-color:var(--faint)}
+.step svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.2}
+.hint{position:absolute;left:0;bottom:22px;color:var(--soft)}
+
+/* list view: the fast, accessible way through */
+.list{display:none;max-width:1320px;margin:0 auto;padding-bottom:80px}
+body.listmode .runway{display:none}
+body.listmode .list{display:block}
+.list .grp{margin:46px 0 0}
+.list h2{margin:0 0 6px;font-weight:300;font-size:13px}
+.list .row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,2fr) auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--faint)}
+.list .row h3{margin:0;font-weight:300;font-size:22px}
+.list .row p{margin:0;color:var(--soft)}
+@media (max-width:760px){.list .row{grid-template-columns:1fr}}
+
+@media (max-width:860px){
+  .stage{grid-template-columns:1fr;grid-template-rows:42% 58%;gap:0}
+  .panel{padding-bottom:20px;overflow:hidden}
+  .frame{aspect-ratio:16/8}
+  .p-title{margin:14px 0 6px}
+  .hint{display:none}
+  .prog{position:static;margin-top:12px}
+}
+footer{max-width:1320px;margin:0 auto;padding-top:80px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));display:grid;gap:22px;border-top:1px solid var(--faint)}
+footer .fl{width:min(420px,80vw);aspect-ratio:1000/463;background:var(--ink);-webkit-mask:url(img/namelogo.png) left center/contain no-repeat;mask:url(img/namelogo.png) left center/contain no-repeat}
+footer .lk{display:flex;flex-wrap:wrap;gap:10px 28px}
+footer .lk a{border-bottom:1px solid var(--ink);padding-bottom:2px}
+.note{color:var(--soft)}
+@media (prefers-reduced-motion: reduce){.swap,.nav .pg::before,.p-title span::before{transition:none}}
+</style>
+
+<header class="nav gut">
+  <a class="brand" href="#" aria-label="Allena Oglivie, home"></a>
+  <nav class="mono" style="display:flex;gap:4px" aria-label="Pages"><a class="pg" href="#">Work</a><a class="pg" href="#">Timeline</a><a class="pg" href="#" aria-current="page">Projects</a><a class="pg" href="#">Orgs</a><a class="pg" href="#">Resume</a></nav>
+  <span class="sets" aria-hidden="true"><button tabindex="-1"><svg viewBox="0 0 18 18"><path d="M1 9H17"/></svg></button><button tabindex="-1"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M9 2A7 7 0 0 1 9 16Z" style="fill:currentColor;stroke:none"/></svg></button></span>
+</header>
+
+<section class="intro gut">
+  <p class="k"><span class="mono box" style="background:var(--lilac)">Sites, games, classes, tools</span></p>
+  <h1>Projects</h1>
+  <p>Each coloured orbit is a category and each planet is a project. Scroll down to turn forward, up to turn back, or click any orbit or planet to go straight there.</p>
+  <div class="legend mono" id="legend"></div>
+  <button class="mono viewbtn" id="viewbtn" type="button" aria-pressed="false">See as a list</button>
+</section>
+
+<div class="runway" id="runway">
+  <div class="stage gut">
+    <div class="sys"><svg id="sys" viewBox="40 130 920 740" role="img" aria-label="Project system: categories as orbits, projects as planets"></svg>
+      <p class="mono hint">Scroll down for next, up for previous · click an orbit or a planet</p></div>
+    <div class="panel" aria-live="polite">
+      <div class="swap" id="pw">
+        <div class="p-top"><span class="mono box" id="pcat"></span><span class="mono idx" id="pidx"></span><span class="rule"></span></div>
+        <div class="frame" id="pframe"></div>
+        <h2 class="p-title"><span id="ptitle"></span></h2>
+        <p class="p-desc" id="pdesc"></p>
+        <div class="p-links mono" id="plinks"></div>
+      </div>
+      <div class="prog" id="prog" aria-hidden="true"></div>
+    </div>
+  </div>
+</div>
+
+<section class="list gut" id="list" aria-label="All projects"></section>
+
+<footer class="gut">
+  <div class="fl" role="img" aria-label="Allena Oglivie"></div>
+  <div class="lk mono"><a href="https://www.linkedin.com/in/allena-oglivie/">LinkedIn</a><a href="https://github.com/Cryphixi">GitHub</a><a href="#">Handshake</a><a href="#">Email</a></div>
+  <p class="mono note">Layout study · the full footer (rising watercolor, Say hello) comes from the design note</p>
+</footer>
+
+<script>
+(function(){
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // The current site's categories and words, unchanged except two typo fixes.
+  const CATS=[
+    {k:"classes",name:"UC Berkeley Upper Division Class Projects",short:"Classes",col:"var(--blue)",a:430,b:140,rot:-9},
+    {k:"games",name:"Game development",short:"Games",col:"var(--black)",a:175,b:330,rot:20},
+    {k:"ml",name:"AI / ML",short:"AI / ML",col:"var(--lilac)",a:330,b:215,rot:-34},
+    {k:"tools",name:"Community tools",short:"Tools",col:"var(--teal)",a:240,b:92,rot:31}
+  ];
+  const P=[
+    {c:0,t:"CS184: Computer Graphics",d:"Rasterizer, MeshEdit, PathTracer and Cloth Simulation, plus the \"Snowfall\" final project.",img:"img/cs184.webp",l:[["View coursework (all four HW)","https://cal-cs184-student.github.io/hw-webpages-Cryphixi/"],["View Snowfall final project","https://c-herbert.github.io/cs184-final-project-webpage/"]]},
+    {c:0,t:"CS180: Computer Vision",d:"Project webpages from Berkeley's computational photography and vision coursework.",img:"img/cs180.webp",fit:1,l:[["View project pages","#"]]},
+    {c:0,t:"CS160: User Interface Design",d:"Interface design coursework, from research through built prototype.",img:"img/cs160.webp",fit:1,l:[["View project","#"]]},
+    {c:1,t:"Inheritance Lines",d:"Narrative-driven game exploring the illusion of choice in a historical setting.",img:"img/inheritance.webp",l:[["View project","#"],["View design doc","https://drive.google.com/file/d/1NoOqXFaJ92TeLSkbu1OXNY7ylpODPRWU/view?usp=sharing"]]},
+    {c:1,t:"Menses Mortis",d:"Want to know what it is like to fight against adaptive NPCs?",img:null,l:[["View project","#"],["View game design doc","https://docs.google.com/document/d/1OoOVOumWwJHKuHzXbsAstZZdh1TOY2M6wKxtw_hIfpM/edit?usp=sharing"]]},
+    {c:2,t:"Canopy",d:"Taking game designer's brainstorms into an engineer-ready NPC behavior spec! Try it by clicking the link below.",img:"img/canopy.webp",l:[["View project","https://canopy-beta-eight.vercel.app/"]]},
+    {c:2,t:"LevelForger",d:"VAE-based procedural level generator. The contribution is the ML architecture.",img:"img/levelforger.webp",l:[["Watch video demo","https://drive.google.com/file/d/1J-tvLDZik0Ndo22orOdVE75lj6V-oRY5/view?usp=drive_link"],["View slideshow","https://drive.google.com/file/d/1oB_wB_Gk1ETjU6nDyGEFOg6IzMcThxC0/view?usp=sharing"]]},
+    {c:3,t:"BALL x PIT Evolution Tracker",fav:1,d:"A fan-made evolution and passive tracker with a team-builder matchmaker. Built out of personal need, I REALLY love this game. Now used daily by the game's Reddit and Discord community!",img:"img/ballxpit.webp",l:[["View tracker","https://cryphixi.github.io/ballxpit-tracker"]]}
+  ];
+  const N=P.length;
+  const runway=document.getElementById("runway"),svg=document.getElementById("sys"),NS="http://www.w3.org/2000/svg";
+  const sizeRunway=()=>{runway.style.height=(N*62+100)+"vh"};sizeRunway();
+
+  // build: orbits, the star from the logo, planets
+  const C=500,FRONT=0;    // planets read at t=0, the right-hand end of each orbit
+  CATS.forEach((c,ci)=>{c.items=P.map((p,i)=>p.c===ci?i:-1).filter(i=>i>=0);c.phi=0});
+  P.forEach((p,i)=>{const c=CATS[p.c],j=c.items.indexOf(i);p.t0=-j*(2*Math.PI/Math.max(c.items.length,1))*(c.items.length>1?1:0)});
+  let h=`<defs>${P.map((p,i)=>`<clipPath id="cp${i}"><circle r="1"/></clipPath>`).join("")}</defs>`;
+  // orbit geometry: back half (behind the star and every planet) and front half (in front of the star, still behind planets)
+  const ePt=(c,t)=>{const r=c.rot*Math.PI/180,x0=c.a*Math.cos(t),y0=c.b*Math.sin(t);return [C+x0*Math.cos(r)-y0*Math.sin(r),C+x0*Math.sin(r)+y0*Math.cos(r)]};
+  const half=(c,t0,t1)=>{let d="";for(let k=0;k<=60;k++){const p=ePt(c,t0+(t1-t0)*k/60);d+=(k?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)}return d};
+  const colOf=c=>c.k==="games"?"var(--games-line)":c.col;
+  h+=`<g id="backs">${CATS.map((c,ci)=>`<g class="og" data-o="${ci}"><path class="orbit back" d="${half(c,Math.PI,2*Math.PI)}" style="stroke:${colOf(c)}"/></g>`).join("")}</g>`;
+  // a four-point star with a thin cross, after the logo's star
+  h+=`<path class="star" d="M500 380 C506 470 514 488 600 500 C514 512 506 530 500 620 C494 530 486 512 400 500 C486 488 494 470 500 380Z"/><path d="M500 340V660M330 500H690" style="stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke;opacity:.5"/>`;
+  h+=`<g id="fronts">${CATS.map((c,ci)=>`<g class="og" data-o="${ci}"><path class="orbit" d="${half(c,0,Math.PI)}" style="stroke:${colOf(c)}"/></g>`).join("")}</g>`;
+  h+=`<g id="hits">${CATS.map((c,ci)=>`<path class="hit" data-o="${ci}" tabindex="0" role="button" aria-label="${c.name} orbit, ${c.items.length} projects" d="${half(c,0,2*Math.PI)}"/>`).join("")}</g>`;
+  h+=`<g id="planets"></g><g id="labels"></g><circle class="reticle" id="ret" r="0"/>`;
+  svg.innerHTML=h;
+  const gPl=svg.querySelector("#planets"),gLab=svg.querySelector("#labels");
+  const planetEls=P.map((p,i)=>{const g=document.createElementNS(NS,"g");g.setAttribute("class","planet");g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label",p.t);
+    g.innerHTML=`<circle class="halo" r="1" style="stroke:${CATS[p.c].col}"/><circle class="rim" r="1"/>`+(p.img?`<image href="${p.img}" x="-1" y="-1" width="2" height="2" preserveAspectRatio="xMidYMid slice" clip-path="url(#cp${i})"/>`:`<path d="M-.6 .1 L0 -.6 L.6 .1 M-.4 .45 H.4" style="fill:none;stroke:var(--soft);stroke-width:1;vector-effect:non-scaling-stroke"/>`)+`<text x="0" y="0"></text>`;
+    g.addEventListener("click",()=>go(i));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go(i)}});
+    gPl.appendChild(g);return g});
+  const ogs=ci=>svg.querySelectorAll(`.og[data-o="${ci}"]`);
+  svg.querySelectorAll(".hit").forEach(hp=>{const ci=+hp.dataset.o,c=CATS[ci];
+    const act=()=>{const cur=c.items.indexOf(shown);go(cur<0?c.items[0]:c.items[(cur+1)%c.items.length])};
+    hp.addEventListener("click",act);hp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act()}});
+    hp.addEventListener("pointerenter",()=>ogs(ci).forEach(g=>g.classList.add("hov")));hp.addEventListener("pointerleave",()=>ogs(ci).forEach(g=>g.classList.remove("hov")));
+    hp.addEventListener("focus",()=>ogs(ci).forEach(g=>g.classList.add("hov")));hp.addEventListener("blur",()=>ogs(ci).forEach(g=>g.classList.remove("hov")));});
+  const labEls=CATS.map((c,ci)=>{const g=document.createElementNS(NS,"g");g.setAttribute("class","olab");g.innerHTML=`<rect height="26" rx="0" style="fill:${c.col}"/><text y="17.5" x="10">${c.short}</text>`;gLab.appendChild(g);
+    const w=g.querySelector("text").getComputedTextLength?0:0;return g});
+
+  // legend and list
+  const legend=document.getElementById("legend");
+  CATS.forEach((c,ci)=>{const b=document.createElement("button");b.type="button";b.style.background=c.col;b.innerHTML=`${c.short} <b>${String(c.items.length).padStart(2,"0")}</b>`;b.addEventListener("click",()=>go(c.items[0]));legend.appendChild(b);c.btn=b});
+  document.getElementById("list").innerHTML=CATS.map(c=>`<div class="grp"><h2 class="mono"><span class="box" style="background:${c.col}">${c.name}</span></h2>${c.items.map(i=>{const p=P[i];return `<div class="row"><h3>${p.t}</h3><p>${p.d}</p><span class="mono">${p.l.map(([a,u])=>`<a href="${u}" style="border-bottom:1px solid var(--ink)">${a}</a>`).join(" &nbsp; ")}</span></div>`}).join("")}</div>`).join("");
+  const vb=document.getElementById("viewbtn");vb.addEventListener("click",()=>{const on=!document.body.classList.contains("listmode");document.body.classList.toggle("listmode",on);vb.setAttribute("aria-pressed",String(on));vb.textContent=on?"See as a system":"See as a list"});
+
+  // reading panel
+  const pw=document.getElementById("pw"),pcat=document.getElementById("pcat"),pidx=document.getElementById("pidx"),pframe=document.getElementById("pframe"),ptitle=document.getElementById("ptitle"),pdesc=document.getElementById("pdesc"),plinks=document.getElementById("plinks"),prog=document.getElementById("prog");
+  prog.innerHTML=`<button class="step" id="prevB" type="button" aria-label="Previous project"><svg viewBox="0 0 14 14"><path d="M2 9L7 4L12 9"/></svg></button>`+P.map((p,i)=>`<button class="seg" type="button" title="${String(i+1).padStart(2,"0")} ${p.t}" aria-label="Go to ${p.t}"></button>`).join("")+`<button class="step" id="nextB" type="button" aria-label="Next project"><svg viewBox="0 0 14 14"><path d="M2 5L7 10L12 5"/></svg></button>`;
+  prog.removeAttribute("aria-hidden");
+  [...prog.querySelectorAll(".seg")].forEach((b,i)=>b.addEventListener("click",()=>go(i)));
+  document.getElementById("prevB").addEventListener("click",()=>go(Math.max(0,shown-1)));
+  document.getElementById("nextB").addEventListener("click",()=>go(Math.min(N-1,shown+1)));
+  let shown=-1,wipeT=0;
+  function fill(i){const p=P[i],c=CATS[p.c];
+    pcat.textContent=c.short;pcat.style.background=c.col;pidx.textContent=String(i+1).padStart(2,"0")+" / "+String(N).padStart(2,"0");
+    pframe.innerHTML=p.img?`<img src="${p.img}" alt="${p.t}" class="${p.fit?"fit":""}">`:`<div class="none mono"><svg viewBox="0 0 100 60"><path d="M10 50 L50 10 L90 50 M25 56 H75"/></svg></div>`;
+    ptitle.textContent=p.t;pdesc.innerHTML=p.d+(p.fav?'<span class="mono badge">Community favorite</span>':"");
+    plinks.innerHTML=p.l.map(([a,u])=>`<a href="${u}" target="_blank" rel="noopener">${a}</a>`).join("");
+    [...prog.querySelectorAll(".seg")].forEach((e,k)=>e.classList.toggle("on",k<=i));
+    document.getElementById("prevB").disabled=i===0;document.getElementById("nextB").disabled=i===N-1;
+    wipeT=performance.now();}
+  function show(i){if(i===shown)return;const first=shown<0;shown=i;
+    if(first||reduce){fill(i);return}
+    pw.classList.add("out");setTimeout(()=>{fill(i);pw.classList.remove("out")},260);}
+
+  // scroll turns the system
+  const runTop=()=>runway.getBoundingClientRect().top+scrollY;
+  function go(i){scrollTo({top:runTop()+(i/(N-1))*(runway.offsetHeight-innerHeight),behavior:reduce?"auto":"smooth"})}
+  let s=0,sv=0;
+  function frame(now){
+    const span=runway.offsetHeight-innerHeight,p=Math.max(0,Math.min(1,(scrollY-runTop())/Math.max(1,span)));
+    const target=p*(N-1);s=reduce?target:s+(target-s)*.12;
+    const act=Math.round(s);show(act);
+    CATS.forEach((c,ci)=>{
+      // each orbit turns so that its project nearest the reading position sits at the front
+      const its=c.items;let tPhi;
+      if(s<=its[0])tPhi=-P[its[0]].t0+(its[0]-s)*.35;
+      else if(s>=its[its.length-1])tPhi=-P[its[its.length-1]].t0-(s-its[its.length-1])*.35;
+      else{for(let k=0;k<its.length-1;k++)if(s>=its[k]&&s<=its[k+1]){const f=(s-its[k])/(its[k+1]-its[k]);tPhi=-(P[its[k]].t0*(1-f)+P[its[k+1]].t0*f)}}
+      c.phi=tPhi+(reduce?0:Math.sin(now/9000+ci)*.04);
+      const on=P[act].c===ci;ogs(ci).forEach(g=>g.classList.toggle("on",on));c.btn.classList.toggle("on",on);
+    });
+    const R=a=>a*Math.PI/180;
+    const pos=P.map((p,i)=>{const c=CATS[p.c],t=p.t0+c.phi,x0=c.a*Math.cos(t),y0=c.b*Math.sin(t),r=R(c.rot);
+      return {x:C+x0*Math.cos(r)-y0*Math.sin(r),y:C+x0*Math.sin(r)+y0*Math.cos(r),z:Math.sin(t)}});
+    // draw back to front
+    const order=P.map((_,i)=>i).sort((a,b)=>pos[a].z-pos[b].z);
+    order.forEach(i=>gPl.appendChild(planetEls[i]));
+    P.forEach((p,i)=>{const g=planetEls[i],q=pos[i],isA=i===act,depth=.75+.25*(q.z+1)/2,rad=(isA?54:24)*depth;
+      g.setAttribute("transform",`translate(${q.x.toFixed(1)} ${q.y.toFixed(1)})`);g.classList.toggle("on",isA);
+      g.querySelector(".rim").setAttribute("r",rad);g.querySelector(".halo").setAttribute("r",rad+9);
+      const im=g.querySelector("image");if(im){im.setAttribute("x",-rad);im.setAttribute("y",-rad);im.setAttribute("width",rad*2);im.setAttribute("height",rad*2);svg.querySelector("#cp"+i+" circle").setAttribute("r",rad-1)}
+      else{const pth=g.querySelector("path");pth.setAttribute("transform",`scale(${rad})`)}
+      g.style.opacity=(isA?1:.35+.45*depth).toFixed(2);
+      const tx=g.querySelector("text");tx.textContent=isA?"":String(i+1).padStart(2,"0");tx.setAttribute("y",-rad-8);tx.setAttribute("text-anchor","middle");
+    });
+    const a=pos[act];const ret=svg.querySelector("#ret");ret.setAttribute("cx",a.x);ret.setAttribute("cy",a.y);ret.setAttribute("r",(68+Math.sin(now/600)*3).toFixed(1));ret.style.strokeDasharray="2 6";
+    // category tags ride the far left of each orbit
+    CATS.forEach((c,ci)=>{const r=R(c.rot),x=C-c.a*Math.cos(r),y=C-c.a*Math.sin(r);const g=labEls[ci];const t=g.querySelector("text"),w=t.getComputedTextLength()+20;
+      g.querySelector("rect").setAttribute("width",w);g.setAttribute("transform",`translate(${(x-w/2).toFixed(1)} ${(y-13).toFixed(1)})`);g.style.opacity=P[act].c===ci?1:.45});
+    requestAnimationFrame(frame);
+  }
+  addEventListener("keydown",e=>{if(document.body.classList.contains("listmode"))return;if(e.target.closest("input,textarea"))return;
+    if(e.key==="ArrowRight"){e.preventDefault();go(Math.min(N-1,shown+1))}if(e.key==="ArrowLeft"){e.preventDefault();go(Math.max(0,shown-1))}});
+  requestAnimationFrame(frame);
+})();
+</script>
